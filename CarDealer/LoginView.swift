@@ -4,6 +4,8 @@
 //
 //  Created by Katellyn Hyker on 9/11/25.
 //
+// Create a login page for users to enter username and password to log in
+// Register a session for the current user
 
 import Foundation
 import SwiftUI

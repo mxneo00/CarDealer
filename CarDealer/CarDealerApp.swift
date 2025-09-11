@@ -4,6 +4,8 @@
 //
 //  Created by Katellyn Hyker on 9/11/25.
 //
+// User and Car classes
+// Session class
 
 import SwiftUI
 import SwiftData

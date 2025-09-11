@@ -16,6 +16,8 @@
 		3FF1EEF62E731A8500A7F0BA /* CarDealerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1EEF52E731A8500A7F0BA /* CarDealerUITestsLaunchTests.swift */; };
 		3FF1EF392E731DF800A7F0BA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1EF382E731DF800A7F0BA /* LoginView.swift */; };
 		3FF1EF3B2E731E0B00A7F0BA /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1EF3A2E731E0B00A7F0BA /* ProfileView.swift */; };
+		3FF1EF3D2E733F3D00A7F0BA /* CarCatalogueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1EF3C2E733F3D00A7F0BA /* CarCatalogueView.swift */; };
+		3FF1EF3F2E733F5800A7F0BA /* CarListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1EF3E2E733F5800A7F0BA /* CarListingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		3FF1EEF52E731A8500A7F0BA /* CarDealerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDealerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3FF1EF382E731DF800A7F0BA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3FF1EF3A2E731E0B00A7F0BA /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		3FF1EF3C2E733F3D00A7F0BA /* CarCatalogueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCatalogueView.swift; sourceTree = "<group>"; };
+		3FF1EF3E2E733F5800A7F0BA /* CarListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 			children = (
 				3FF1EED82E731A8400A7F0BA /* CarDealerApp.swift */,
 				3FF1EEDA2E731A8400A7F0BA /* ContentView.swift */,
+				3FF1EF3C2E733F3D00A7F0BA /* CarCatalogueView.swift */,
+				3FF1EF3E2E733F5800A7F0BA /* CarListingView.swift */,
 				3FF1EF382E731DF800A7F0BA /* LoginView.swift */,
 				3FF1EF3A2E731E0B00A7F0BA /* ProfileView.swift */,
 				3FF1EEDC2E731A8500A7F0BA /* Assets.xcassets */,
@@ -263,9 +269,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FF1EF3D2E733F3D00A7F0BA /* CarCatalogueView.swift in Sources */,
 				3FF1EF3B2E731E0B00A7F0BA /* ProfileView.swift in Sources */,
 				3FF1EF392E731DF800A7F0BA /* LoginView.swift in Sources */,
 				3FF1EEDB2E731A8400A7F0BA /* ContentView.swift in Sources */,
+				3FF1EF3F2E733F5800A7F0BA /* CarListingView.swift in Sources */,
 				3FF1EED92E731A8400A7F0BA /* CarDealerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
