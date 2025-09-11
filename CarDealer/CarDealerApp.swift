@@ -68,6 +68,8 @@ class Session: ObservableObject {
 }
 
 struct RootView: View {
+    @EnvironmentObject var session: Session
+    
     var body: some View {
         if let _ = session.currentUser {
             ContentView()
