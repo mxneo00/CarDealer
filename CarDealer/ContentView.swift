@@ -9,7 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("A View")
+        NavigationView {
+            VStack{
+                Text("Home Page")
+                
+                
+                NavigationLink("Login", destination: LoginView())
+                NavigationLink("Profile", destination: ProfileView())
+                NavigationLink("Car Catalogue", destination: CarCatalogueView())
+                NavigationLink("Car Listings", destination: CarListingView())
+            }
+        }
+        .navigationTitle("Home")
     }
 }
 

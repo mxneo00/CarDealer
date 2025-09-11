@@ -67,11 +67,26 @@ class Session: ObservableObject {
     }
 }
 
+struct RootView: View {
+    var body: some View {
+        if let _ = session.currentUser {
+            ContentView()
+        } else {
+            LoginView()
+        }
+    }
+}
+
 @main
 struct CarDealerApp: App {
+    let container = try! ModelContainer(for: User.self, Car.self)
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
+                .environment(\.modelContext, ModelContext(container))
+                .environmentObject(Session(container: container))
         }
+        .modelContainer(container)
     }
 }
