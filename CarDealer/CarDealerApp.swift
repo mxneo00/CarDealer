@@ -56,6 +56,15 @@ import SwiftData
     
 }
 
+class Session: ObservableObject {
+    var currentUser: Bool?
+    private let container: ModelContainer
+    
+    init(container: ModelContainer) {
+        self.container = container
+    }
+}
+
 @main
 struct CarDealerApp: App {
     var body: some Scene {
