@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  CarDealer
 //
-//  Created by Student on 9/11/25.
+//  Created by Katellyn Hyker on 9/11/25.
 //
 
 import SwiftUI
