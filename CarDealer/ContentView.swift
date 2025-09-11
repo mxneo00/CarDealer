@@ -13,7 +13,6 @@ struct ContentView: View {
             VStack{
                 Text("Home Page")
                 
-                
                 NavigationLink("Login", destination: LoginView())
                 NavigationLink("Profile", destination: ProfileView())
                 NavigationLink("Car Catalogue", destination: CarCatalogueView())
