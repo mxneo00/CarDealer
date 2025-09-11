@@ -10,11 +10,11 @@ Estimated time: ~3–6 hours (depends on depth)
 Prereqs: SwiftUI basics; Codable; comfort with Xcode previews/simulator
 ## Learning Objectives
 ● SwiftData: Define @Model types, relationships, fetch with @Query, save data,
-background imports.
-● JSON (Internet): Fetch a JSON feed, decode w/ snake_case keys, map to SwiftData.
+background imports.   
+● JSON (Internet): Fetch a JSON feed, decode w/ snake_case keys, map to SwiftData.   
 ● Images: Display remote images with AsyncImage + graceful placeholder; clip with
-shapes.
-● LazyStacks: Build a scalable feed with ScrollView + LazyVStack + pinned headers.
+shapes.   
+● LazyStacks: Build a scalable feed with ScrollView + LazyVStack + pinned headers.   
 ● Environments: Inject apiBase and theme tokens via custom EnvironmentKey.
 ● Dark Mode: Use system/semantic colors; asset variants; conditional shadows.
 ● Custom Styles: Create ButtonStyle, ViewModifier card; apply app-wide.
