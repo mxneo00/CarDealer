@@ -40,7 +40,7 @@ class CarCollection: ObservableObject, Identifiable {
     init() {
         let loader = JSONLoader()
         do {
-            var carDTOs = try loader.load([CarDTO].self, path: "cars.json")
+            let carDTOs = try loader.load([CarDTO].self, path: "cars.json")
             for car in carDTOs {
                 cars.append(CarViewModel(dto: car))
             }
@@ -62,11 +62,11 @@ struct CarCard: View {
 }
 
 struct CarRow: View{
-    let dto: CarDTO
+    @ObservedObject var car: CarViewModel
     
     var body: some View {
         VStack {
-            if let url = dto.url {
+            if let url = car.url {
                 Image(url)
                     .resizable()
                     .scaledToFit()
@@ -78,17 +78,17 @@ struct CarRow: View{
                     .frame(width: 150, height: 150)
             }
         }
-        Text("\(dto.model) \(dto.year) $\(dto.price, specifier: "%.2f") \(dto.specs.horsepower)")
+        Text("\(car.model) \(car.year) $\(car.price, specifier: "%.2f") \(car.horsepower) HP")
     }
 }
 
-struct CarCatalogueView: View {
+struct carCatalogueView: View {
     @StateObject var collection: CarCollection = CarCollection()
     
     var body: some View {
         ScrollView {
             ForEach(collection.cars) { car in
-                NavigationLink(destination: CarCard(car: CarViewModel(dto: car))) {
+                NavigationLink(destination: CarCard(car: car)) {
                     CarRow(car: car)
                 }
             }
@@ -97,5 +97,5 @@ struct CarCatalogueView: View {
 }
 
 #Preview {
-    CarCatalogueView()
+    carCatalogueView()
 }

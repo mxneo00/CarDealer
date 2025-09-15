@@ -16,7 +16,7 @@ struct ContentView: View {
                 NavigationLink("Login", destination: LoginView())
                 NavigationLink("Sign Up", destination: SignUpView())
                 //NavigationLink("Profile", destination: ProfileView())
-                //NavigationLink("Car Catalogue", destination: CarCatalogueView())
+                NavigationLink("Car Catalogue", destination: carCatalogueView())
                 //NavigationLink("Car Listings", destination: CarListingView())
             }
         }
