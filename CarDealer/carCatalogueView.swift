@@ -51,7 +51,7 @@ class CarCollection: ObservableObject, Identifiable {
 }
 
 struct CarCard: View {
-    var car: CarViewModel
+    @ObservedObject var car: CarViewModel
     
     var body: some View {
         VStack {
@@ -61,13 +61,37 @@ struct CarCard: View {
     }
 }
 
+struct CarRow: View{
+    let dto: CarDTO
+    
+    var body: some View {
+        VStack {
+            if let url = dto.url {
+                Image(url)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width:150, height: 150)
+            } else {
+                Image("generic")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 150, height: 150)
+            }
+        }
+        Text("\(dto.model) \(dto.year) $\(dto.price, specifier: "%.2f") \(dto.specs.horsepower)")
+    }
+}
+
 struct CarCatalogueView: View {
     @StateObject var collection: CarCollection = CarCollection()
     
-    
     var body: some View {
         ScrollView {
-            
+            ForEach(collection.cars) { car in
+                NavigationLink(destination: CarCard(car: CarViewModel(dto: car))) {
+                    CarRow(car: car)
+                }
+            }
         }
     }
 }
