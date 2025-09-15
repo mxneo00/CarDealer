@@ -64,16 +64,22 @@ struct LoginView: View {
     @State private var error: String? = nil
     
     var body: some View {
-        Form {
-            Section("Username") {
-                TextField("Enter username", text: $username)
+        NavigationStack {
+            Form {
+                Section("Username") {
+                    TextField("Enter username", text: $username)
+                }
+                Section("Password") {
+                    TextField("Enter password", text: $password)
+                }
+                Button(action: login) {
+                    Text("Login")
+                }
             }
-            Section("Password") {
-                TextField("Enter password", text: $password)
+            Section("New User") {
+                NavigationLink("Sign Up", destination: SignUpView())
             }
-        }
-        Button(action: login) {
-            Text("Login")
+            
         }
     }
     
@@ -83,6 +89,6 @@ struct LoginView: View {
 }
 
 #Preview {
-    //LoginView()
-    SignUpView()
+    LoginView()
+    //SignUpView()
 }
