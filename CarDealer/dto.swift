@@ -31,6 +31,7 @@ struct SpecsDTO: Codable {
 
 struct CarDTO: Identifiable, Codable {
     let id: UUID = UUID()
+    let brand: String
     let model: String
     let year: Int
     let specs: SpecsDTO
@@ -39,6 +40,6 @@ struct CarDTO: Identifiable, Codable {
     let owner: UserDTO? = nil
     
     enum CodingKeys: String, CodingKey {
-        case model, year, specs, price, url, owner
+        case brand, model, year, specs, price, url, owner
     }
 }
