@@ -4,6 +4,7 @@
 //
 //  Created by Katellyn Hyker on 9/15/25.
 //
+// Session registration
 
 import SwiftUI
 import SwiftData

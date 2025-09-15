@@ -4,8 +4,8 @@
 //
 //  Created by Katellyn Hyker on 9/11/25.
 //
+// Sign up page for new users to create an account
 // Create a login page for users to enter username and password to log in
-// Register a session for the current user
 
 import Foundation
 import SwiftUI
@@ -19,6 +19,7 @@ struct SignUpView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var passwordConfirmation: String = ""
+    @State private var error: String? = nil
     
     var body: some View {
         Form {
@@ -82,5 +83,6 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView()
+    //LoginView()
+    SignUpView()
 }
