@@ -15,22 +15,25 @@ struct Theme: Equatable {
         let cardBackground: Color
         let danger: Color
     }
-    struct Spacing: Equatable { let xs: CGFloat; let sm: CGFloat; let md: CGFloat; let lg: CGFloat; let xl: CGFloat}
+    struct Spacing: Equatable { let xs: CGFloat; let sm: CGFloat; let md: CGFloat; let lg: CGFloat}
     struct Radii: Equatable {let sm: CGFloat; let md: CGFloat; let lg: CGFloat}
+    struct Elevation: Equatable {let cardShadow: CGFloat}
     
     let palette: Palette
     let spacing: Spacing
     let radii: Radii
+    let elevation: Elevation
     
     static let brand = Theme(
         palette: .init(
             primary: Color("brand"),
             secondary: Color("brandSecondary"),
             onPrimary: .white,
-            cardBackground: Color(.systemGray),
+            cardBackground: Color(.secondarySystemBackground),
             danger: .red
         ),
-        spacing: .init(xs: 4, sm: 8, md: 16, lg: 24, xl: 32),
-        radii: .init(sm: 4, md: 8, lg: 16)
+        spacing: .init(xs: 4, sm: 8, md: 16, lg: 24),
+        radii: .init(sm: 4, md: 8, lg: 16),
+        elevation: .init(cardShadow: 6)
     )
 }

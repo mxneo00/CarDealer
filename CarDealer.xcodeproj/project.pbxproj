@@ -15,6 +15,7 @@
 		3F02CAB02E78738700011C56 /* dto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F02CAAF2E78738300011C56 /* dto.swift */; };
 		3F02CAB82E7876FA00011C56 /* JSONLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F02CAB72E7876F300011C56 /* JSONLoader.swift */; };
 		3F02CABA2E787CC300011C56 /* cars.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F02CAB92E787CC300011C56 /* cars.json */; };
+		3F02CABC2E788AD600011C56 /* tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F02CABB2E788AD200011C56 /* tabs.swift */; };
 		3FF1EED92E731A8400A7F0BA /* CarDealerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1EED82E731A8400A7F0BA /* CarDealerApp.swift */; };
 		3FF1EEDB2E731A8400A7F0BA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1EEDA2E731A8400A7F0BA /* ContentView.swift */; };
 		3FF1EEDD2E731A8500A7F0BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FF1EEDC2E731A8500A7F0BA /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 		3F02CAAF2E78738300011C56 /* dto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dto.swift; sourceTree = "<group>"; };
 		3F02CAB72E7876F300011C56 /* JSONLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONLoader.swift; sourceTree = "<group>"; };
 		3F02CAB92E787CC300011C56 /* cars.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cars.json; sourceTree = "<group>"; };
+		3F02CABB2E788AD200011C56 /* tabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabs.swift; sourceTree = "<group>"; };
 		3FF1EED52E731A8400A7F0BA /* CarDealer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarDealer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF1EED82E731A8400A7F0BA /* CarDealerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDealerApp.swift; sourceTree = "<group>"; };
 		3FF1EEDA2E731A8400A7F0BA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		3FF1EED72E731A8400A7F0BA /* CarDealer */ = {
 			isa = PBXGroup;
 			children = (
+				3F02CABB2E788AD200011C56 /* tabs.swift */,
 				3F02CAA92E7871EF00011C56 /* session.swift */,
 				3FF1EED82E731A8400A7F0BA /* CarDealerApp.swift */,
 				3F02CAAB2E7872A700011C56 /* models.swift */,
@@ -299,6 +302,7 @@
 				3F02CAAA2E7871F200011C56 /* session.swift in Sources */,
 				3F02CAB82E7876FA00011C56 /* JSONLoader.swift in Sources */,
 				3FF1EF3B2E731E0B00A7F0BA /* ProfileView.swift in Sources */,
+				3F02CABC2E788AD600011C56 /* tabs.swift in Sources */,
 				3FF1EF392E731DF800A7F0BA /* signInView.swift in Sources */,
 				3FF1EEDB2E731A8400A7F0BA /* ContentView.swift in Sources */,
 				3F02CAA02E786EE500011C56 /* theme.swift in Sources */,
