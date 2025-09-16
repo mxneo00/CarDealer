@@ -20,6 +20,9 @@ import SwiftData
     var createdAt: Double = Date().timeIntervalSince1970
     var updatedAt: Double = Date().timeIntervalSince1970
     
+    @Relationship(deleteRule: .cascade) var listings: [Listing] = []
+    @Relationship(deleteRule: .cascade) var likes: [Like] = []
+    
     func name() -> String {
         return "\(fname) \(lname)"
     }
