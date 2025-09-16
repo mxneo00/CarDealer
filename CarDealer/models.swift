@@ -17,22 +17,20 @@ import SwiftData
     var avatarURL: String = "default_avatar"
     var passwordDigest: String
     var accountActivated: Bool = false
-    var createdAt: Date
-    var updatedAt: Date
+    var createdAt: Double = Date().timeIntervalSince1970
+    var updatedAt: Double = Date().timeIntervalSince1970
     
     func name() -> String {
         return "\(fname) \(lname)"
     }
     
-    init(username: String, email: String, fname: String, lname: String, avatarURL: String, passwordDigest: String, createdAt: Date, updatedAt: Date) {
+    init(username: String, email: String, fname: String, lname: String, avatarURL: String, passwordDigest: String) {
         self.username = username
         self.email = email
         self.fname = fname
         self.lname = lname
         self.avatarURL = avatarURL
         self.passwordDigest = passwordDigest
-        self.createdAt = createdAt
-        self.updatedAt = updatedAt
     }
     
 }
@@ -63,17 +61,15 @@ import SwiftData
 
 @Model class Listing {
     @Attribute(.unique) var id: UUID
-    var createdAt: Date
-    var updatedAt: Date
+    var createdAt: Double = Date().timeIntervalSince1970
+    var updatedAt: Double = Date().timeIntervalSince1970
     var price: Float
     var car: Car
     var seller: User
     var isSold: Bool
     
-    init(id: UUID, createdAt: Date, updatedAt: Date, price: Float, car: Car, seller: User, isSold: Bool) {
+    init(id: UUID, price: Float, car: Car, seller: User, isSold: Bool) {
         self.id = id
-        self.createdAt = createdAt
-        self.updatedAt = updatedAt
         self.price = price
         self.car = car
         self.seller = seller
