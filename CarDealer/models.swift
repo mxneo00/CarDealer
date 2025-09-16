@@ -16,18 +16,23 @@ import SwiftData
     var lname: String
     var avatarURL: String = "default_avatar"
     var passwordDigest: String
+    var accountActivated: Bool = false
+    var createdAt: Date
+    var updatedAt: Date
     
     func name() -> String {
         return "\(fname) \(lname)"
     }
     
-    init(username: String, email: String, fname: String, lname: String, avatarURL: String, passwordDigest: String) {
+    init(username: String, email: String, fname: String, lname: String, avatarURL: String, passwordDigest: String, createdAt: Date, updatedAt: Date) {
         self.username = username
         self.email = email
         self.fname = fname
         self.lname = lname
         self.avatarURL = avatarURL
         self.passwordDigest = passwordDigest
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
     }
     
 }
@@ -54,4 +59,38 @@ import SwiftData
         self.owner = owner
     }
     
+}
+
+@Model class Listing {
+    @Attribute(.unique) var id: UUID
+    var createdAt: Date
+    var updatedAt: Date
+    var price: Float
+    var car: Car
+    var seller: User
+    var isSold: Bool
+    
+    init(id: UUID, createdAt: Date, updatedAt: Date, price: Float, car: Car, seller: User, isSold: Bool) {
+        self.id = id
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+        self.price = price
+        self.car = car
+        self.seller = seller
+        self.isSold = isSold
+    }
+}
+
+@Model class Like {
+    @Attribute(.unique) var id: UUID
+    var createdAt: Date
+    var user: User
+    var car: Car
+    
+    init(id: UUID, createdAt: Date, user: User, car: Car) {
+        self.id = id
+        self.createdAt = createdAt
+        self.user = user
+        self.car = car
+    }
 }
