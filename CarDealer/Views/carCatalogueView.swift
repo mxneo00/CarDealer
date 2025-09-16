@@ -4,6 +4,7 @@
 //
 //  Created by Katellyn Hyker on 9/11/25.
 //
+// Car Catalogue View using JSON data
 
 import Foundation
 import SwiftUI
@@ -78,7 +79,7 @@ struct CarRow: View{
                     .frame(width: 150, height: 150)
             }
         }
-        Text("\(car.model) \(car.year) $\(car.price, specifier: "%.2f") \(car.horsepower) HP")
+        Text("\(car.brand) \(car.model) \(car.year, format: .number.grouping(.never)) $\(car.price, specifier: "%.0f")")
     }
 }
 
