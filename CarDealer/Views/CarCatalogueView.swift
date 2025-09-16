@@ -6,7 +6,6 @@
 //
 // Car Catalogue View using JSON data
 
-import Foundation
 import SwiftUI
 
 class CarViewModel: ObservableObject, Identifiable {
