@@ -82,13 +82,12 @@ import SwiftData
 
 @Model class Like {
     @Attribute(.unique) var id: UUID
-    var createdAt: Date
+    var createdAt: Double = Date().timeIntervalSince1970
     var user: User
     var car: Car
     
-    init(id: UUID, createdAt: Date, user: User, car: Car) {
+    init(id: UUID, user: User, car: Car) {
         self.id = id
-        self.createdAt = createdAt
         self.user = user
         self.car = car
     }

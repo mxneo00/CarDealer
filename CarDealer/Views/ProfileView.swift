@@ -14,7 +14,7 @@ struct ProfileSection: View {
     let user: User
     
     var body: some View {
-        Section(header: Text("Profile")) {
+//        Section(header: Text("Profile")) {
             HStack {
                 Circle()
                     .fill(Color.gray.opacity(0.3))
@@ -29,7 +29,7 @@ struct ProfileSection: View {
                         .foregroundColor(.secondary)
                 }
             }
-        }
+//        }
     }
 }
 
@@ -38,7 +38,7 @@ struct ListingSection: View {
     let listings: [Listing]
     
     var body: some View {
-        Section(header: Text("My Listings")) {
+//        Section(header: Text("My Listings")) {
             if listings.isEmpty {
                 Text("No Listings")
                     .foregroundColor(.secondary)
@@ -53,7 +53,7 @@ struct ListingSection: View {
                     }
                 }
             }
-        }
+//        }
     }
 }
 // User Likes Section
@@ -61,7 +61,7 @@ struct LikesSection: View {
     let likes: [Like]
     
     var body: some View {
-        Section(header: Text("Liked Cars")) {
+//        Section(header: Text("Liked Cars")) {
             if likes.isEmpty {
                 Text("No cars liked")
                     .foregroundColor(.secondary)
@@ -72,7 +72,7 @@ struct LikesSection: View {
                     }
                 }
             }
-        }
+//        }
     }
 }
 
@@ -81,15 +81,21 @@ struct ProfileView: View {
     
     // TODO: Set up to handle an actual signed-in user session
     @Query(filter: #Predicate<User> { $0.email == "test@example.com"})
-    private var users: [User]
+     var users: [User]
     
     var body: some View {
         NavigationStack {
             if let user = users.first {
                 List {
-                    ProfileSection(user: user)
-                    ListingSection(listings: user.listings)
-                    LikesSection(likes: user.likes)
+                    Section(header: Text("Profile")) {
+                        ProfileSection(user: user)
+                    }
+                    Section(header: Text("Listings")) {
+                        ListingSection(listings: user.listings)
+                    }
+                    Section(header: Text("Likes")) {
+                        LikesSection(likes: user.likes)
+                    }
                     // TODO: Set up buttons to navigate to edit and log out
                     //                    Section() {
                     //                        Button("Edit Profile") {
@@ -111,17 +117,26 @@ struct ProfileView: View {
     }
 }
 
+
 #Preview {
-    let container = try! ModelContainer(for: User.self, Car.self)
+    let container = try! ModelContainer(for: User.self, Car.self, Listing.self, Like.self)
     let context = ModelContext(container)
     
-    let dummyUser = User(username: "DoeJohn", email: "djohn@yahoo.com", fname: "John", lname: "Doe", avatarURL: "globe", passwordDigest: "Password")
-    context.insert(dummyUser)
-    
-    let session = Session(container: container)
-    session.currentUser = dummyUser
+//    let car1 = Car(brand: "Toyota", model: "Corolla", year: 2022, price: 22000, carURL: "globe")
+//    let car2 = Car(brand: "Ford", model: "Mustang", year: 2023, price: 45000, carURL: "globe")
+//    
+//    let dummyUser = User(username: "DoeJohn", email: "djohn@yahoo.com", fname: "John", lname: "Doe", avatarURL: "globe", passwordDigest: "Password")
+//    //context.insert(dummyUser)
+//    
+//    let listing1 = Listing(id: UUID(), price: 21000, car: car1, seller: dummyUser, isSold: false)
+//    let listing2 = Listing(id: UUID(), price: 40000, car: car2, seller: dummyUser, isSold: true)
+//    let like1 = Like(id: UUID(), user: dummyUser, car: car1)
+//    
+//    let session = Session(container: container)
+//    session.currentUser = dummyUser
     
     ProfileView()
-        .environmentObject(session)
-        .environment(\.modelContext, context)
+        .environmentObject(Session.preview)
+//        .environmentObject(session)
+//        .environment(\.modelContext, ModelContext(container))
 }

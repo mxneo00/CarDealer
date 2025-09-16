@@ -59,6 +59,49 @@ class Session: ObservableObject {
     }
 }
 
+extension ModelContainer {
+    static var preview: ModelContainer {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        return try! ModelContainer(for: User.self, configurations: config)
+    }
+}
+
+class MockSession: Session {
+    override init(container: ModelContainer) {
+        super.init(container: container)
+        self.currentUser = previewUser
+    }
+    
+    var user2: User {
+        return User(username: "DoeJane", email: "dhjane@yahoo.com", fname: "Jane", lname: "Doe", avatarURL: "globe", passwordDigest: "Password")
+    }
+    
+    var previewUser: User {
+        let car1 = Car(brand: "Toyota", model: "Corolla", year: 2022, price: 22000, carURL: "globe")
+        let car2 = Car(brand: "Ford", model: "Mustang", year: 2023, price: 45000, carURL: "globe")
+        
+        _ = Listing(id: UUID(), price: 21000, car: car1, seller: user2, isSold: false)
+        _ = Listing(id: UUID(), price: 40000, car: car2, seller: user2, isSold: true)
+        _ = Like(id: UUID(), user: user2, car: car1)
+        
+        return User(username: "DoeJohn", email: "djohn@yahoo.com", fname: "John", lname: "Doe", avatarURL: "globe", passwordDigest: "Password")
+    }
+    
+    override func login(emailOrUsername: String, password: String) throws {
+        self.currentUser = previewUser
+    }
+    
+    override func signup(email: String, lname: String, fname: String, password: String, username: String) throws {
+        // no-op
+    }
+}
+
+extension Session {
+    static var preview: Session {
+        MockSession(container: .preview)
+    }
+}
+
 enum LoginError: Error {
     case invalidCredentials
 }
