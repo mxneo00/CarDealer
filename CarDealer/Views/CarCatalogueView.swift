@@ -82,7 +82,7 @@ struct CarRow: View{
     }
 }
 
-struct carCatalogueView: View {
+struct CarCatalogueView: View {
     @StateObject var collection: CarCollection = CarCollection()
     
     var body: some View {
