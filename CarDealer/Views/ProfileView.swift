@@ -112,5 +112,16 @@ struct ProfileView: View {
 }
 
 #Preview {
+    let container = try! ModelContainer(for: User.self, Car.self)
+    let context = ModelContext(container)
+    
+    let dummyUser = User(username: "DoeJohn", email: "djohn@yahoo.com", fname: "John", lname: "Doe", avatarURL: "globe", passwordDigest: "Password")
+    context.insert(dummyUser)
+    
+    let session = Session(container: container)
+    session.currentUser = dummyUser
+    
     ProfileView()
+        .environmentObject(session)
+        .environment(\.modelContext, ModelContext(container))
 }

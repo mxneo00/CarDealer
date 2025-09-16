@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
     @EnvironmentObject var session: Session
@@ -44,5 +45,9 @@ struct ContentView: View {
 }
 
 #Preview {
+    let container = try! ModelContainer(for: User.self, Car.self)
+    let session = Session(container: container)
     ContentView()
+        .environmentObject(session)
+        .environment(\.modelContext, ModelContext(container))
 }

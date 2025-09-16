@@ -97,5 +97,5 @@ struct CarCatalogueView: View {
 }
 
 #Preview {
-    carCatalogueView()
+    CarCatalogueView()
 }

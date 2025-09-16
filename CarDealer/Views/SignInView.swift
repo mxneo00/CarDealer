@@ -7,8 +7,8 @@
 // Sign up page for new users to create an account
 // Create a login page for users to enter username and password to log in
 
-import Foundation
 import SwiftUI
+import SwiftData
 
 struct SignUpView: View {
     @EnvironmentObject var session: Session
@@ -123,6 +123,13 @@ struct LoginView: View {
 }
 
 #Preview {
+    let container = try! ModelContainer(for: User.self, Car.self)
+    let session = Session(container: container)
     LoginView()
-    //SignUpView()
+        .environmentObject(session)
+        .environment(\.modelContext, ModelContext(container))
+//    SignUpView()
+//        .environmentObject(session)
+//        .environment(\.modelContext, ModelContext(container))
+    
 }
