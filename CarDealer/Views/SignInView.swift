@@ -1,5 +1,5 @@
 //
-//  LoginView.swift
+//  SignInView.swift
 //  CarDealer
 //
 //  Created by Katellyn Hyker on 9/11/25.
@@ -25,6 +25,7 @@ struct SignUpView: View {
         Form {
             Section("Username") {
                 TextField("Enter username", text: $username)
+                    .autocapitalization(.none)
             }
             Section("First Name") {
                 TextField("First name", text: $fname)
@@ -34,12 +35,15 @@ struct SignUpView: View {
             }
             Section("Email") {
                 TextField("Email", text: $email)
+                    .autocapitalization(.none)
             }
             Section("Password") {
-                TextField("Password", text: $password)
+                SecureField("Password", text: $password)
+                    .autocapitalization(.none)
             }
             Section("Confirm Password") {
-                TextField("Confirm password", text: $passwordConfirmation)
+                SecureField("Confirm password", text: $passwordConfirmation)
+                    .autocapitalization(.none)
             }
         }
         Button(action: signUp) {
@@ -47,6 +51,15 @@ struct SignUpView: View {
         }
     }
     func signUp() {
+        guard !username.isEmpty, !email.isEmpty, !password.isEmpty else {
+            error = "Username, email, and password are required"
+            return
+        }
+        guard password == passwordConfirmation else {
+            error = "Passwords do not match"
+            return
+        }
+        //TODO create user in session
         print("Signed up")
     }
 }
@@ -68,23 +81,34 @@ struct LoginView: View {
             Form {
                 Section("Username") {
                     TextField("Enter username", text: $username)
+                        .autocapitalization(.none)
                 }
                 Section("Password") {
-                    TextField("Enter password", text: $password)
+                    SecureField("Enter password", text: $password)
+                        .autocapitalization(.none)
                 }
                 Button(action: login) {
                     Text("Login")
                 }
-            }
-            Section("New User") {
-                NavigationLink("Sign Up", destination: SignUpView())
+                Section("New User") {
+                    NavigationLink("Sign Up", destination: SignUpView())
+                }
             }
             
         }
     }
     
     func login() {
-        print("Logging in")
+        guard !username.isEmpty, !password.isEmpty else {
+            error = "Username and password required"
+            return
+        }
+        // TODO Catch for username and password correct
+        
+        // TODO register user in session
+        //session.user = User(username: username, email: email)
+        
+        //print("Logging in")
     }
 }
 
