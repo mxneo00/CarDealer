@@ -14,7 +14,6 @@ struct ProfileSection: View {
     let user: User
     
     var body: some View {
-        
         Section(header: Text("Profile")) {
             HStack {
                 Circle()
@@ -36,20 +35,19 @@ struct ProfileSection: View {
 
 // User Listings Section
 struct ListingSection: View {
-    let user: User
+    let listings: [Listing]
     
     var body: some View {
-        
         Section(header: Text("My Listings")) {
-            if user.listings.isEmpty {
+            if listings.isEmpty {
                 Text("No Listings")
                     .foregroundColor(.secondary)
             } else {
-                ForEach(user.listings) { listing in
+                ForEach(listings) { listing in
                     NavigationLink(destination: CarListingView(listing: listing)) {
                         VStack(alignment: .leading) {
                             Text("\(listing.car.brand) \(listing.car.model)")
-                            Text("\(listing.price, specifier: "%0.2f")")
+                            Text("\(listing.price, specifier: "%.2f")")
                                 .foregroundColor(.secondary)
                         }
                     }
@@ -60,16 +58,15 @@ struct ListingSection: View {
 }
 // User Likes Section
 struct LikesSection: View {
-    let user: User
+    let likes: [Like]
     
     var body: some View {
-        
         Section(header: Text("Liked Cars")) {
-            if user.likes.isEmpty {
+            if likes.isEmpty {
                 Text("No cars liked")
                     .foregroundColor(.secondary)
             } else {
-                ForEach(user.likes) { like in
+                ForEach(likes) { like in
                     NavigationLink(destination: CarListingView(car: like.car)) {
                         Text("\(like.car.brand) \(like.car.model) \(like.car.year)")
                     }
@@ -91,21 +88,24 @@ struct ProfileView: View {
             if let user = users.first {
                 List {
                     ProfileSection(user: user)
-                    ListingSection(user: user)
-                    LikesSection(user: user)
+                    ListingSection(listings: user.listings)
+                    LikesSection(likes: user.likes)
                     // TODO: Set up buttons to navigate to edit and log out
-//                    Section() {
-//                        Button("Edit Profile") {
-//                            
-//                        }
-//                        Button("Log out") {
-//                            
-//                        }
-//                    }
+                    //                    Section() {
+                    //                        Button("Edit Profile") {
+                    //
+                    //                        }
+                    //                        Button("Log out") {
+                    //
+                    //                        }
+                    //                    }
                 }
                 .navigationTitle("Profile")
             } else {
-                Text("No user signed in")
+                VStack {
+                    Text("No user signed in")
+                }
+                .navigationTitle("Profile")
             }
         }
     }
@@ -123,5 +123,5 @@ struct ProfileView: View {
     
     ProfileView()
         .environmentObject(session)
-        .environment(\.modelContext, ModelContext(container))
+        .environment(\.modelContext, context)
 }
