@@ -8,6 +8,7 @@
 
 import SwiftUI
 import SwiftData
+import CryptoKit
 
 class Session: ObservableObject {
     @Published var currentUser: User?
@@ -20,9 +21,11 @@ class Session: ObservableObject {
         self.ctx = ModelContext(container)
     }
     
-    // TODO Replace with actual hashing
+    // Hash password
     func hash(password: String) -> String {
-        return password
+        let data = Data(password.utf8)
+        let hashed = SHA256.hash(data: data)
+        return hashed.compactMap{ String(format: "%02x", $0)}.joined()
     }
     
     func signup(email: String, lname: String, fname: String, password: String, username: String) throws {
