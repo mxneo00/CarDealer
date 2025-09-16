@@ -4,9 +4,80 @@
 //
 //  Created by Katellyn Hyker on 9/11/25.
 //
+// Profile View containing User information, Users listings, and users liked cars
 
 import SwiftUI
 import SwiftData
+
+// User Profile Section
+struct ProfileSection: View {
+    let user: User
+    
+    var body: some View {
+        
+        Section(header: Text("Profile")) {
+            HStack {
+                Circle()
+                    .fill(Color.gray.opacity(0.3))
+                    .frame(width: 60, height: 60)
+                    .overlay(Text(user.name().prefix(1)))
+                
+                VStack(alignment: .leading) {
+                    Text(user.name())
+                        .font(.headline)
+                    Text(user.email)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+            }
+        }
+    }
+}
+
+// User Listings Section
+struct ListingSection: View {
+    let user: User
+    
+    var body: some View {
+        
+        Section(header: Text("My Listings")) {
+            if user.listings.isEmpty {
+                Text("No Listings")
+                    .foregroundColor(.secondary)
+            } else {
+                ForEach(user.listings) { listing in
+                    NavigationLink(destination: CarListingView(listing: listing)) {
+                        VStack(alignment: .leading) {
+                            Text("\(listing.car.brand) \(listing.car.model)")
+                            Text("\(listing.price, specifier: "%0.2f")")
+                                .foregroundColor(.secondary)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// User Likes Section
+struct LikesSection: View {
+    let user: User
+    
+    var body: some View {
+        
+        Section(header: Text("Liked Cars")) {
+            if user.likes.isEmpty {
+                Text("No cars liked")
+                    .foregroundColor(.secondary)
+            } else {
+                ForEach(user.likes) { like in
+                    NavigationLink(destination: CarListingView(car: like.car)) {
+                        Text("\(like.car.brand) \(like.car.model) \(like.car.year)")
+                    }
+                }
+            }
+        }
+    }
+}
 
 struct ProfileView: View {
     @Environment(\.modelContext) private var context
@@ -19,53 +90,9 @@ struct ProfileView: View {
         NavigationStack {
             if let user = users.first {
                 List {
-                    // Profile Section
-                    Section(header: Text("Profile")) {
-                        HStack {
-                            Circle()
-                                .fill(Color.gray.opacity(0.3))
-                                .frame(width: 60, height: 60)
-                                .overlay(Text(user.name().prefix(1)))
-                            
-                            VStack(alignment: .leading) {
-                                Text(user.name())
-                                    .font(.headline)
-                                Text(user.email)
-                                    .font(.subheadline)
-                                    .foregroundColor(.secondary)
-                            }
-                        }
-                    }
-                    // User Listings Section
-                    Section(header: Text("My Listings")) {
-                        if user.listings.isEmpty {
-                            Text("No Listings")
-                                .foregroundColor(.secondary)
-                        } else {
-                            ForEach(user.listings) { listing in
-                                NavigationLink(destination: CarListingView(listing: listing)) {
-                                    VStack(alignment: .leading) {
-                                        Text("\(listing.car.brand) \(listing.car.model)")
-                                        Text("\(listing.price, specifier: "%0.2f")")
-                                            .foregroundColor(.secondary)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    // User Likes Section
-                    Section(header: Text("Liked Cars")) {
-                        if user.likes.isEmpty {
-                            Text("No cars liked")
-                                .foregroundColor(.secondary)
-                        } else {
-                            ForEach(user.likes) { like in
-                                NavigationLink(destination: CarListingView(car: like.car)) {
-                                    Text("\(like.car.brand) \(like.car.model) \(like.car.year)")
-                                }
-                            }
-                        }
-                    }
+                    ProfileSection(user: user)
+                    ListingSection(user: user)
+                    LikesSection(user: user)
                     // TODO: Set up buttons to navigate to edit and log out
 //                    Section() {
 //                        Button("Edit Profile") {

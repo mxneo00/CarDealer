@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3F02CAA22E786EFC00011C56 /* environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F02CAA12E786EF700011C56 /* environment.swift */; };
+		3F02CAAA2E7871F200011C56 /* session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F02CAA92E7871EF00011C56 /* session.swift */; };
+		3F02CAAC2E7872A900011C56 /* models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F02CAAB2E7872A700011C56 /* models.swift */; };
+		3F02CAB02E78738700011C56 /* dto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F02CAAF2E78738300011C56 /* dto.swift */; };
 		3FF1EED92E731A8400A7F0BA /* CarDealerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF1EED82E731A8400A7F0BA /* CarDealerApp.swift */; };
 		3FF1EEDD2E731A8500A7F0BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FF1EEDC2E731A8500A7F0BA /* Assets.xcassets */; };
 		3FF1EEE02E731A8500A7F0BA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FF1EEDF2E731A8500A7F0BA /* Preview Assets.xcassets */; };
@@ -35,6 +38,9 @@
 
 /* Begin PBXFileReference section */
 		3F02CAA12E786EF700011C56 /* environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = environment.swift; sourceTree = "<group>"; };
+		3F02CAA92E7871EF00011C56 /* session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = session.swift; sourceTree = "<group>"; };
+		3F02CAAB2E7872A700011C56 /* models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = models.swift; sourceTree = "<group>"; };
+		3F02CAAF2E78738300011C56 /* dto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dto.swift; sourceTree = "<group>"; };
 		3FF1EED52E731A8400A7F0BA /* CarDealer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarDealer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF1EED82E731A8400A7F0BA /* CarDealerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDealerApp.swift; sourceTree = "<group>"; };
 		3FF1EEDC2E731A8500A7F0BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -109,6 +115,9 @@
 				3F5EB6F72E79CBE10033E4EE /* Photos */,
 				3FF1EED82E731A8400A7F0BA /* CarDealerApp.swift */,
 				3F02CAA12E786EF700011C56 /* environment.swift */,
+				3F02CAA92E7871EF00011C56 /* session.swift */,
+				3F02CAAF2E78738300011C56 /* dto.swift */,
+				3F02CAAB2E7872A700011C56 /* models.swift */,
 				3FF1EEDC2E731A8500A7F0BA /* Assets.xcassets */,
 				3FF1EEDE2E731A8500A7F0BA /* Preview Content */,
 			);
@@ -278,7 +287,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F02CAA22E786EFC00011C56 /* environment.swift in Sources */,
+				3F02CAAA2E7871F200011C56 /* session.swift in Sources */,
+				3F02CAB02E78738700011C56 /* dto.swift in Sources */,
 				3FF1EED92E731A8400A7F0BA /* CarDealerApp.swift in Sources */,
+				3F02CAAC2E7872A900011C56 /* models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
