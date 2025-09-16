@@ -43,3 +43,25 @@ struct CarDTO: Identifiable, Codable {
         case brand, model, year, specs, price, url, owner
     }
 }
+
+struct ListingDTO: Identifiable, Codable {
+    let id: UUID = UUID()
+    let price: Float
+    let car: CarDTO
+    let seller: UserDTO? = nil
+    let isSold: Bool
+    
+    enum CodingKeys: String, CodingKey {
+        case price, car, seller, isSold
+    }
+}
+
+struct LikeDTO: Identifiable, Codable {
+    let id: UUID = UUID()
+    let user: UserDTO
+    let car: CarDTO
+    
+    enum CodingKeys: String, CodingKey {
+        case user, car
+    }
+}
