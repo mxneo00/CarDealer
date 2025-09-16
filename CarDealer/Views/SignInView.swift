@@ -50,6 +50,7 @@ struct SignUpView: View {
             Text("Sign Up")
         }
     }
+    
     func signUp() {
         guard !username.isEmpty, !email.isEmpty, !password.isEmpty else {
             error = "Username, email, and password are required"
@@ -59,8 +60,12 @@ struct SignUpView: View {
             error = "Passwords do not match"
             return
         }
-        //TODO create user in session
-        print("Signed up")
+        //Create user in session
+        do {
+            try session.signup(email: email, lname: lname, fname: fname, password: password, username: username)
+        } catch {
+            print("Signup failed: \(error)")
+        }
     }
 }
 
@@ -106,9 +111,14 @@ struct LoginView: View {
         // TODO Catch for username and password correct
         
         // TODO register user in session
-        //session.user = User(username: username, email: email)
-        
-        //print("Logging in")
+        do {
+            try session.login(emailOrUsername: username, password: password)
+        } catch {
+            print("Login failed: \(error)")
+        }
+        if let user = session.currentUser {
+            print("Logged in as \(user.username)")
+        }
     }
 }
 

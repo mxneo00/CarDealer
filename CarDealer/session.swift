@@ -10,7 +10,7 @@ import SwiftUI
 import SwiftData
 
 class Session: ObservableObject {
-    @Published var currentUser: Bool?
+    @Published var currentUser: User?
     private let container: ModelContainer
     private let ctx: ModelContext
     
@@ -20,26 +20,42 @@ class Session: ObservableObject {
         self.ctx = ModelContext(container)
     }
     
+    // TODO Replace with actual hashing
     func hash(password: String) -> String {
         return password
     }
     
     func signup(email: String, lname: String, fname: String, password: String, username: String) throws {
-        let c = ctx
         let digest = hash(password: password)
-        let user = User(username: username, email: email, fname: fname, lname: fname, avatarURL: "globe", passwordDigest: digest)
+        let user = User(username: username, email: email, fname: fname, lname: lname, avatarURL: "globe", passwordDigest: digest)
         
-        c.insert(user)
-        try c.save()
-        currentUser = true
+        ctx.insert(user)
+        try ctx.save()
+        
+        currentUser = user
     }
     
-    func login(emailOrUsername: String, password: String) {
+    func login(emailOrUsername: String, password: String) throws {
         let digest = hash(password: password)
-        if emailOrUsername == "USERNAME" && password == "PASSWORD" {
-            currentUser = true
+        
+        let descriptor = FetchDescriptor<User>(
+            predicate: #Predicate{$0.email == emailOrUsername || $0.username == emailOrUsername && $0.passwordDigest == digest }
+        )
+        
+        let users = try ctx.fetch(descriptor)
+        
+        if let user = users.first {
+            currentUser = user
         } else {
-            print("Username or password not recognized")
+            throw LoginError.invalidCredentials
         }
     }
+    
+    func logout() {
+        currentUser = nil
+    }
+}
+
+enum LoginError: Error {
+    case invalidCredentials
 }
