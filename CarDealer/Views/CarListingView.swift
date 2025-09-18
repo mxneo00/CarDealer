@@ -35,18 +35,9 @@ struct CarListingView: View {
 }
 
 //#Preview {
-//    let container = try! ModelContainer(for: User.self, Car.self, Listing.self)
+//    let container = try! ModelContainer(for: User.self, Car.self, Listing.self, Like.self)
 //    let context = ModelContext(container)
 //    
-//    let dummyUser = User(username: "DoeJohn", email: "djohn@yahoo.com", fname: "John", lname: "Doe", avatarURL: "globe", passwordDigest: "Password")
-//    context.insert(dummyUser)
-//    
-//    let dummyCar = Car(brand: "Honda", model: "Civic", year: 2023, price: 22000, carURL: "globe")
-//    
-//    let dummyListing = Listing(id: UUID(), price: 22000, car: dummyCar, seller: dummyUser, isSold: false)
-//    
-//    context.insert(dummyListing)
-//    
-//    CarListingView(listing: dummyListing)
-//        .environment(\.modelContext, context)
+//    CarListingView(listing: Listing)
+//        .environmentObject(Session.preview)
 //}
