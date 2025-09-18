@@ -74,7 +74,7 @@ class Session: ObservableObject {
 extension ModelContainer {
     static var preview: ModelContainer {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        return try! ModelContainer(for: User.self, configurations: config)
+        return try! ModelContainer(for: User.self, Car.self, Listing.self, Like.self, configurations: config)
     }
 }
 
@@ -110,7 +110,7 @@ class MockSession: Session {
 
 extension Session {
     static var preview: Session {
-        MockSession(container: .preview)
+        MockSession(container: ModelContainer.preview)
     }
 }
 
