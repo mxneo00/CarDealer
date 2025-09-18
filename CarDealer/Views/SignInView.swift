@@ -46,27 +46,39 @@ struct SignUpView: View {
                     .autocapitalization(.none)
             }
         }
-        Button(action: signUp) {
-            Text("Sign Up")
+        Button("Sign Up") {
+            signup()
         }
     }
     
-    func signUp() {
-        guard !username.isEmpty, !email.isEmpty, !password.isEmpty else {
-            error = "Username, email, and password are required"
-            return
-        }
-        guard password == passwordConfirmation else {
-            error = "Passwords do not match"
-            return
-        }
-        //Create user in session
+    func signup() {
         do {
             try session.signup(email: email, lname: lname, fname: fname, password: password, username: username)
         } catch {
-            print("Signup failed: \(error)")
+            print("Signup failed \(error)")
         }
     }
+    
+//    func signup() {
+//        let newUser = User(username: username, email: email, fname: fname, lname: lname, avatarURL: "globe", passwordDigest: password)
+//        
+//        guard !username.isEmpty, !email.isEmpty, !password.isEmpty else {
+//            error = "Username, email, and password are required"
+//            return
+//        }
+//        guard password == passwordConfirmation else {
+//            error = "Passwords do not match"
+//            return
+//        }
+//        //Create user in session
+//        ctx.insert(newUser)
+//        do {
+//            try session.currentUser = newUser
+//            print("Signup success")
+//        } catch {
+//            print("Signup failed: \(error)")
+//        }
+//    }
 }
 
 struct LoginView: View {
@@ -96,7 +108,7 @@ struct LoginView: View {
                     Text("Login")
                 }
                 Section("New User") {
-                    NavigationLink("Sign Up", destination: SignUpView())
+                    NavigationLink("Sign Up", destination: SignUpView(container: ModelContainer))
                 }
             }
             

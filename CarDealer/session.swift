@@ -30,12 +30,24 @@ class Session: ObservableObject {
     
     func signup(email: String, lname: String, fname: String, password: String, username: String) throws {
         let digest = hash(password: password)
-        let user = User(username: username, email: email, fname: fname, lname: lname, avatarURL: "globe", passwordDigest: digest)
+        let newUser = User(username: username, email: email, fname: fname, lname: lname, avatarURL: "globe", passwordDigest: digest)
         
-        ctx.insert(user)
-        try ctx.save()
+//        guard !username.isEmpty, !email.isEmpty, !password.isEmpty else {
+//            error = "Username, email, and password are required"
+//            return
+//        }
+//        guard password == passwordConfirmation else {
+//            error = "Passwords do not match"
+//            return
+//        }
         
-        currentUser = user
+        ctx.insert(newUser)
+        do {
+            try ctx.save()
+            currentUser = newUser
+        } catch {
+            print("Signup failed: \(error)")
+        }
     }
     
     func login(emailOrUsername: String, password: String) throws {

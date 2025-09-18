@@ -45,7 +45,7 @@ struct ListingSection: View {
             } else {
                 ForEach(listings) { listing in
                     NavigationLink(destination: CarListingView(listing: listing)) {
-                        VStack(alignment: .leading) {
+                        LazyVStack(alignment: .leading) {
                             Text("\(listing.car.brand) \(listing.car.model)")
                             Text("\(listing.price, specifier: "%.2f")")
                                 .foregroundColor(.secondary)
