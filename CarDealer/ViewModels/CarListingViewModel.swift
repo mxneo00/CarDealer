@@ -9,5 +9,8 @@ import SwiftUI
 import SwiftData
 
 class CarListingViewModel: ObservableObject, Identifiable {
+    @Published var dto: ListingDTO? = nil
+    
+    
     
 }
