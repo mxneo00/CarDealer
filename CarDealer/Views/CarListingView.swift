@@ -40,7 +40,7 @@ struct SellTabView: View {
 struct CarDetailView: View {
     @Environment(\.modelContext) var ctx
     @EnvironmentObject var session: Session
-    @StateObject private var vm = LikesViewModel()
+//    @StateObject private var vm = LikesViewModel()
     
     let listing: Listing?
     let car: Car?
@@ -67,29 +67,21 @@ struct CarDetailView: View {
             } else {
                 Text("No data")
             }
-            if let car = car ?? listing?.car, let currentUser = session.currentUser {
-                Button(action: {
-                    try? vm.toggleLike(for: car)
-                }) {
-                    Image(systemName: vm.isLiked(car: car) ? "heart.fill" : "heart")
-                        .foregroundColor(.red)
-                }
-            }
+//            if let car = car ?? listing?.car, let currentUser = session.currentUser {
+//                Button(action: {
+//                    try? vm.toggleLike(for: car)
+//                }) {
+//                    Image(systemName: vm.isLiked(car: car) ? "heart.fill" : "heart")
+//                        .foregroundColor(.red)
+//                }
+//            }
         }
-        .onAppear {
-            if let currentUser = session.currentUser {
-                vm.ctx = ctx
-                vm.user = currentUser
-                vm.getLikes()
-            }
-        }
+//        .onAppear {
+//            if let currentUser = session.currentUser {
+//                vm.ctx = ctx
+//                vm.user = currentUser
+//                vm.getLikes()
+//            }
+//        }
     }
 }
-
-//#Preview {
-//    let container = try! ModelContainer(for: User.self, Car.self, Listing.self, Like.self)
-//    let context = ModelContext(container)
-//    
-//    CarListingView(listing: Listing)
-//        .environmentObject(Session.preview)
-//}
