@@ -45,17 +45,17 @@ struct CarDetailView: View {
     let listing: Listing?
     let car: Car?
     
-//    init(listing: Listing) {
-//        self.listing = listing
-//        self.car = nil
-//        _vm = StateObject(wrappedValue: LikesViewModel(ctx: ctx, user: User()))
-//    }
-//    
-//    init(car: Car) {
-//        self.listing = nil
-//        self.car = car
-//        _vm = StateObject(wrappedValue: LikesViewModel(ctx: ctx, user: User()))
-//    }
+    init(listing: Listing) {
+        self.listing = listing
+        self.car = nil
+        //_vm = StateObject(wrappedValue: LikesViewModel(ctx: ctx, user: User()))
+    }
+    
+    init(car: Car) {
+        self.listing = nil
+        self.car = car
+       //_vm = StateObject(wrappedValue: LikesViewModel(ctx: ctx, user: User()))
+    }
     
     
     var body: some View {
