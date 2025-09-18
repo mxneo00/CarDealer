@@ -78,6 +78,7 @@ struct LikesSection: View {
 
 struct ProfileView: View {
     @Environment(\.modelContext) private var context
+    @EnvironmentObject var session: Session
     
     // TODO: Set up to handle an actual signed-in user session
     @Query(filter: #Predicate<User> { $0.email == "test@example.com"})
@@ -96,15 +97,15 @@ struct ProfileView: View {
                     Section(header: Text("Likes")) {
                         LikesSection(likes: user.likes)
                     }
-                    // TODO: Set up buttons to navigate to edit and log out
-                    //                    Section() {
-                    //                        Button("Edit Profile") {
-                    //
-                    //                        }
-                    //                        Button("Log out") {
-                    //
-                    //                        }
-                    //                    }
+// TODO: Set up buttons to navigate to edit and log out
+//                    Section() {
+//                        Button("Edit Profile") {
+//
+//                        }
+//                        Button("Log out") {
+//
+//                        }
+//                    }
                 }
                 .navigationTitle("Profile")
             } else {

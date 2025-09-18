@@ -24,7 +24,7 @@ struct RootView: View {
 
 @main
 struct CarDealerApp: App {
-    let container = try! ModelContainer(for: User.self, Car.self)
+    let container = try! ModelContainer(for: User.self, Car.self, Listing.self, Like.self)
     
     var body: some Scene {
         WindowGroup {

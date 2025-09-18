@@ -47,15 +47,11 @@ struct SignUpView: View {
             }
         }
         Button("Sign Up") {
-            signup()
-        }
-    }
-    
-    func signup() {
-        do {
-            try session.signup(email: email, lname: lname, fname: fname, password: password, username: username)
-        } catch {
-            print("Signup failed \(error)")
+            do {
+                try session.signup(email: email, lname: lname, fname: fname, password: password, username: username)
+            } catch {
+                print("Signup failed \(error)")
+            }
         }
     }
     
@@ -108,7 +104,7 @@ struct LoginView: View {
                     Text("Login")
                 }
                 Section("New User") {
-                    NavigationLink("Sign Up", destination: SignUpView(container: ModelContainer))
+                    NavigationLink("Sign Up", destination: SignUpView())
                 }
             }
             
