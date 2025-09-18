@@ -92,8 +92,8 @@ class MockSession: Session {
         let car1 = Car(brand: "Toyota", model: "Corolla", year: 2022, price: 22000, carURL: "globe")
         let car2 = Car(brand: "Ford", model: "Mustang", year: 2023, price: 45000, carURL: "globe")
         
-        _ = Listing(id: UUID(), price: 21000, car: car1, seller: user2, isSold: false)
-        _ = Listing(id: UUID(), price: 40000, car: car2, seller: user2, isSold: true)
+        _ = Listing(price: 21000, car: car1, seller: user2)
+        _ = Listing(price: 40000, car: car2, seller: user2)
         _ = Like(id: UUID(), user: user2, car: car1)
         
         return User(username: "DoeJohn", email: "djohn@yahoo.com", fname: "John", lname: "Doe", avatarURL: "globe", passwordDigest: "Password")

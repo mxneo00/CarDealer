@@ -26,24 +26,30 @@ struct SignUpView: View {
             Section("Username") {
                 TextField("Enter username", text: $username)
                     .autocapitalization(.none)
+                    .autocorrectionDisabled(true)
             }
             Section("First Name") {
                 TextField("First name", text: $fname)
+                    .autocorrectionDisabled(true)
             }
             Section("Last Name") {
                 TextField("Last name", text: $lname)
+                    .autocorrectionDisabled(true)
             }
             Section("Email") {
                 TextField("Email", text: $email)
                     .autocapitalization(.none)
+                    .autocorrectionDisabled(true)
             }
             Section("Password") {
                 SecureField("Password", text: $password)
                     .autocapitalization(.none)
+                    .autocorrectionDisabled(true)
             }
             Section("Confirm Password") {
                 SecureField("Confirm password", text: $passwordConfirmation)
                     .autocapitalization(.none)
+                    .autocorrectionDisabled(true)
             }
         }
         Button("Sign Up") {
@@ -74,10 +80,12 @@ struct LoginView: View {
                 Section("Username") {
                     TextField("Enter username", text: $username)
                         .autocapitalization(.none)
+                        .autocorrectionDisabled(true)
                 }
                 Section("Password") {
                     SecureField("Enter password", text: $password)
                         .autocapitalization(.none)
+                        .autocorrectionDisabled(true)
                 }
                 Button(action: login) {
                     Text("Login")
