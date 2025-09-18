@@ -11,40 +11,28 @@ import SwiftData
 
 struct SellTabView: View {
     @EnvironmentObject var session: Session
-    
-    @State private var brand: String = ""
-    @State private var model: String = ""
-    @State private var yearInput: String = ""
-    @State private var year: Int?
-    @State private var priceInput: String = ""
-    @State private var price: Float?
-    @State private var imageURL: String = ""
+    @Environment(\.modelContext) var ctx
+    @StateObject private var vm = SellTabViewModel()
     
     var body: some View {
         Form {
             Section("Brand") {
-                TextField("Brand", text: $brand)
+                TextField("Brand", text: $vm.brand)
             }
             Section("Model") {
-                TextField("Model", text: $model)
+                TextField("Model", text: $vm.model)
             }
             Section("Year") {
-                TextField("Year", text: $yearInput)
+                TextField("Year", text: $vm.yearInput)
                     .keyboardType(.numberPad)
-                    .onChange(of: yearInput) { newValue in
-                        year = Int(newValue) ?? 0
-                    }
             }
             Section("Price") {
-                TextField("Price", text: $priceInput)
+                TextField("Price", text: $vm.priceInput)
                     .keyboardType(.numberPad)
-                    .onChange(of: priceInput) { newValue in
-                            price = Float(newValue) ?? 0
-                    }
             }
             // TODO: Make fully functioning
             Button("Create Listing") {
-                print("Listing created")
+                vm.createListing(ctx: ctx, user: session.currentUser)
             }
         }
     }
