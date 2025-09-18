@@ -57,17 +57,16 @@ class Session: ObservableObject {
             predicate: #Predicate{$0.email == emailOrUsername || $0.username == emailOrUsername && $0.passwordDigest == digest }
         )
         
-        let users = try ctx.fetch(descriptor)
-        
-        if let user = users.first {
-            currentUser = user
+        if let user = try? ctx.fetch(descriptor).first {
+            self.currentUser = user
         } else {
             throw LoginError.invalidCredentials
         }
+        
     }
     
     func logout() {
-        currentUser = nil
+        self.currentUser = nil
     }
 }
 

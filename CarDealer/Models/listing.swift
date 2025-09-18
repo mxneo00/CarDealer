@@ -15,12 +15,12 @@ import SwiftData
     var price: Float
     var car: Car
     var seller: User
-    var isSold: Bool?
+    var isSold: Bool = false
     
     init(price: Float, car: Car, seller: User) {
         self.price = price
         self.car = car
         self.seller = seller
-        self.isSold = isSold
+        self.isSold = false
     }
 }

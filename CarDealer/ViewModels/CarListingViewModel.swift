@@ -9,8 +9,6 @@ import SwiftUI
 import SwiftData
 
 class SellTabViewModel: ObservableObject {
-    @EnvironmentObject var session: Session
-    @Environment(\.modelContext) var ctx: ModelContext
     
     @Published var brand: String = ""
     @Published var model: String = ""
@@ -27,9 +25,10 @@ class SellTabViewModel: ObservableObject {
             return
         }
         
-        let car = Car(brand: brand, model: model, year: year, price: price, carURL: imageURL)
+        let car = Car(brand: brand, model: model, year: year, price: price, carURL: imageURL.isEmpty ? "default_car": imageURL)
         let listing = Listing(price: price, car: car, seller: user)
         
+        user.listings.append(listing)
         ctx.insert(car)
         ctx.insert(listing)
         
@@ -37,7 +36,7 @@ class SellTabViewModel: ObservableObject {
             try ctx.save()
             print("Listing created")
         } catch {
-            print("Listing Failed")
+            print("Listing Failed \(error.localizedDescription)")
         }
         
     }

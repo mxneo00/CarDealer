@@ -54,8 +54,15 @@ struct ProfileView: View {
             
             if let user = session.currentUser {
                 NavigationStack {
-                    ListingSection(listings: user.listings)
-                        .navigationTitle("Listings")
+                    if user.listings.isEmpty {
+                        Text("No Listings")
+                    } else {
+                        ListingSection(listings: user.listings)
+                            .navigationTitle("Listings")
+                    }
+                    NavigationLink(destination: SellTabView()) {
+                        Label("Create new Listing", systemImage: "plus.circle.fill")
+                    }
                 }
                 .tabItem {
                     Label("Listings", systemImage: "car.fill")

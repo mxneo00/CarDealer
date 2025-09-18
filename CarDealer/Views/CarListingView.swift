@@ -30,7 +30,6 @@ struct SellTabView: View {
                 TextField("Price", text: $vm.priceInput)
                     .keyboardType(.numberPad)
             }
-            // TODO: Make fully functioning
             Button("Create Listing") {
                 vm.createListing(ctx: ctx, user: session.currentUser)
             }.buttonStyle(PillButtonStyle())
