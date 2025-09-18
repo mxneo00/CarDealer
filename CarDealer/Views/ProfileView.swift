@@ -24,44 +24,50 @@ struct ProfileView: View {
      var users: [User]
     
     var body: some View {
-        // Change so that the initial view is just the profile section
-        // Make Listings and Likes into tabs and add a tab to go back to home page
-        NavigationStack {
-            if let user = session.currentUser {
-                List {
-                    Section(header: Text("Profile")) {
+        TabView {
+            NavigationStack {
+                if let user = session.currentUser {
+                    VStack(spacing: 20) {
                         ProfileSection(user: user)
+                        
+                        HStack {
+                            NavigationLink("Edit Profile") {
+                                EditProfileView()
+                            }
+                            Spacer()
+                            Button("Logout") {
+                                session.logout()
+                            }.buttonStyle(PillButtonStyle())
+                        }
+                        .padding(.horizontal)
                     }
-                    Section(header: Text("Listings")) {
-                        ListingSection(listings: user.listings)
-                    }
-                    // TODO Create new Listing Button
-//                    Section() {
-//                        Button("New Listing"){
-//
-//                        }
-//                    }
-                    Section(header: Text("Likes")) {
-                        LikesSection(likes: user.likes)
-                    }
-// TODO: Set up buttons to navigate to edit and log out
-//                    Section() {
-//                        Button("Edit Profile") {
-//
-//                        }
-//                        Button("Log out") {
-//
-//                        }
-//                    }
-                    // OPTIONAL ADDITION Settings (manage edit profile and logout here
-                    
-                }
-                .navigationTitle("Profile")
-            } else {
-                VStack {
+                    .padding()
+                    .navigationTitle("Profile")
+                } else {
                     Text("No user signed in")
+                        .navigationTitle("Profile")
                 }
-                .navigationTitle("Profile")
+            }
+            .tabItem {
+                Label("Profile", systemImage: "person.crop.circle")
+            }
+            
+            if let user = session.currentUser {
+                NavigationStack {
+                    ListingSection(listings: user.listings)
+                        .navigationTitle("Listings")
+                }
+                .tabItem {
+                    Label("Listings", systemImage: "car.fill")
+                }
+                
+                NavigationStack {
+                    LikesSection(likes: user.likes)
+                        .navigationTitle("Likes")
+                }
+                .tabItem {
+                    Label("Likes", systemImage: "heart.fill")
+                }
             }
         }
     }
