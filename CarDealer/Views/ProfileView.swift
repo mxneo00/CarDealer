@@ -14,7 +14,6 @@ struct ProfileSection: View {
     let user: User
     
     var body: some View {
-//        Section(header: Text("Profile")) {
             LazyVStack {
                 Circle()
                     .fill(Color.gray.opacity(0.3))
@@ -26,7 +25,6 @@ struct ProfileSection: View {
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
-//        }
     }
 }
 
@@ -35,7 +33,6 @@ struct ListingSection: View {
     let listings: [Listing]
     
     var body: some View {
-//        Section(header: Text("My Listings")) {
             if listings.isEmpty {
                 Text("No Listings")
                     .foregroundColor(.secondary)
@@ -50,7 +47,6 @@ struct ListingSection: View {
                     }
                 }
             }
-//        }
     }
 }
 // User Likes Section
@@ -58,7 +54,6 @@ struct LikesSection: View {
     let likes: [Like]
     
     var body: some View {
-//        Section(header: Text("Liked Cars")) {
             if likes.isEmpty {
                 Text("No cars liked")
                     .foregroundColor(.secondary)
@@ -69,7 +64,6 @@ struct LikesSection: View {
                     }
                 }
             }
-//        }
     }
 }
 
@@ -77,7 +71,6 @@ struct ProfileView: View {
     @Environment(\.modelContext) private var context
     @EnvironmentObject var session: Session
     
-    // TODO: Set up to handle an actual signed-in user session
     @Query(filter: #Predicate<User> { $0.email == "test@example.com"})
      var users: [User]
     
