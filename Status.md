@@ -1,21 +1,22 @@
 ## Completed
-Login and Sign up pages (Basic)
+Login and Sign up pages
 Session   
-Home/Loading Page (Basic)   
-Profile page (Basic)   
-CarListingView/CarDetailView (Basic)   
+Home/Loading Page   
+Profile page   
+CarDetailView (Basic)   
 SwiftData Models   
+Selling/Listings    
+
 
 ## In progress
 SwiftData implementation   
 Error Handling   
+Likes    
+theme and styling   
 
 
 ## ToDo
 Buy Flow   
-Sell Tab   
-Likes functionality   
 Environments   
-Theme and Styling   
 Test All pages   
 Test full app functionality   
