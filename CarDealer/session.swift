@@ -93,7 +93,7 @@ class MockSession: Session {
         
         _ = Listing(price: 21000, car: car1, seller: user2)
         _ = Listing(price: 40000, car: car2, seller: user2)
-        _ = Like(id: UUID(), user: user2, car: car1)
+        _ = Like(user: user2, car: car1)
         
         return User(username: "DoeJohn", email: "djohn@yahoo.com", fname: "John", lname: "Doe", avatarURL: "globe", passwordDigest: "Password")
     }

@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 @Model class Like {
-    @Attribute(.unique) var id: UUID = UUID()
+//    @Attribute(.unique) var id: UUID = UUID()
     var createdAt: Double = Date().timeIntervalSince1970
     var user: User
     var car: Car

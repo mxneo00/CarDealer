@@ -14,7 +14,7 @@ struct LikesView: View {
     @StateObject private var vm: LikesViewModel
     
     init(user: User, ctx: ModelContext) {
-        _vm = StateObject(wrappedValue: LikesViewModel(ctx: ctx, user: user))
+        _vm = StateObject(wrappedValue: LikesViewModel())
     }
     
     var body: some View {

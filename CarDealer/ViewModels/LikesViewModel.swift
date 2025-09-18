@@ -11,19 +11,21 @@ import SwiftData
 class LikesViewModel: ObservableObject {
     @Published var likes: [Like] = []
     
-    private let ctx: ModelContext
-    private let user: User
+    var ctx: ModelContext!
+    var user: User!
     
-    init(ctx: ModelContext, user: User) {
-        self.ctx = ctx
-        self.user = user
-        getLikes()
-    }
+//    init(ctx: ModelContext, user: User) {
+//        self.ctx = ctx
+//        self.user = user
+//        getLikes()
+//    }
+    
+    init() {}
     
     func getLikes() {
         do {
             let descriptor = FetchDescriptor<Like>(
-                predicate: #Predicate { $0.user.id == self.user.id }
+                predicate: #Predicate { $0.user == self.user }
             )
             likes = try ctx.fetch(descriptor)
         } catch {

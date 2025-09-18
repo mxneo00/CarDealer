@@ -38,36 +38,50 @@ struct SellTabView: View {
 }
 
 struct CarDetailView: View {
+    @Environment(\.modelContext) var ctx
     @EnvironmentObject var session: Session
-    @StateObject private var vm: LikesViewModel
+    @StateObject private var vm = LikesViewModel()
     
     let listing: Listing?
     let car: Car?
     
-    init(listing: Listing, user: User) {
-        self.listing = listing
-        self.car = nil
-    }
-    
-    init(car: Car, user: User) {
-        self.listing = nil
-        self.car = car
-    }
+//    init(listing: Listing) {
+//        self.listing = listing
+//        self.car = nil
+//        _vm = StateObject(wrappedValue: LikesViewModel(ctx: ctx, user: User()))
+//    }
+//    
+//    init(car: Car) {
+//        self.listing = nil
+//        self.car = car
+//        _vm = StateObject(wrappedValue: LikesViewModel(ctx: ctx, user: User()))
+//    }
     
     
     var body: some View {
-        if let listing = listing {
-            Text("Listing: \(listing.car.brand) \(listing.car.model) \(listing.car.year)")
-        } else if let car = car {
-            Text("Car: \(car.brand) \(car.model) \(car.year)")
-        } else {
-            Text("No data")
+        VStack {
+            if let listing = listing {
+                Text("Listing: \(listing.car.brand) \(listing.car.model) \(listing.car.year)")
+            } else if let car = car {
+                Text("Car: \(car.brand) \(car.model) \(car.year)")
+            } else {
+                Text("No data")
+            }
+            if let car = car ?? listing?.car, let currentUser = session.currentUser {
+                Button(action: {
+                    try? vm.toggleLike(for: car)
+                }) {
+                    Image(systemName: vm.isLiked(car: car) ? "heart.fill" : "heart")
+                        .foregroundColor(.red)
+                }
+            }
         }
-        Button(action: {
-            try? vm.toggleLike(for: car!)
-        }) {
-            Image(systemName: vm.isLiked(car: car!) ? "heart.fill" : "heart")
-                .foregroundColor(.red)
+        .onAppear {
+            if let currentUser = session.currentUser {
+                vm.ctx = ctx
+                vm.user = currentUser
+                vm.getLikes()
+            }
         }
     }
 }
