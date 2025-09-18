@@ -53,6 +53,7 @@ struct SignUpView: View {
             }
         }
         Button("Sign Up") {
+            // Create session on signup completion
             do {
                 try session.signup(email: email, lname: lname, fname: fname, password: password, username: username)
             } catch {
@@ -99,13 +100,14 @@ struct LoginView: View {
     }
     
     func login() {
+        // Check if Username or Password Fields are empty
         guard !username.isEmpty, !password.isEmpty else {
             error = "Username and password required"
             return
         }
         // TODO Catch for username and password correct
         
-        // TODO register user in session
+        // Start session on login
         do {
             try session.login(emailOrUsername: username, password: password)
         } catch {

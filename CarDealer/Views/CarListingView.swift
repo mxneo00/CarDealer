@@ -39,16 +39,17 @@ struct SellTabView: View {
 
 struct CarDetailView: View {
     @EnvironmentObject var session: Session
+    @StateObject private var vm: LikesViewModel
     
     let listing: Listing?
     let car: Car?
     
-    init(listing: Listing) {
+    init(listing: Listing, user: User) {
         self.listing = listing
         self.car = nil
     }
     
-    init(car: Car) {
+    init(car: Car, user: User) {
         self.listing = nil
         self.car = car
     }
@@ -61,6 +62,12 @@ struct CarDetailView: View {
             Text("Car: \(car.brand) \(car.model) \(car.year)")
         } else {
             Text("No data")
+        }
+        Button(action: {
+            try? vm.toggleLike(for: car!)
+        }) {
+            Image(systemName: vm.isLiked(car: car!) ? "heart.fill" : "heart")
+                .foregroundColor(.red)
         }
     }
 }
