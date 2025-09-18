@@ -3,12 +3,23 @@
 //  CarDealer
 //
 //  Created by Katellyn Hyker on 9/11/25.
-//
+// View Specific car listing data
+// Create Sell Tab View (Users create new car listings)
 
 import SwiftUI
 import SwiftData
 
+struct SellTabView: View {
+    @EnvironmentObject var session: Session
+    
+    var body: some View {
+        
+    }
+}
+
 struct CarListingView: View {
+    @EnvironmentObject var session: Session
+    
     let listing: Listing?
     let car: Car?
     

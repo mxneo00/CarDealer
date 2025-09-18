@@ -84,6 +84,12 @@ struct ProfileView: View {
                     Section(header: Text("Listings")) {
                         ListingSection(listings: user.listings)
                     }
+                    // TODO Create new Listing Button
+//                    Section() {
+//                        Button("New Listing"){
+//
+//                        }
+//                    }
                     Section(header: Text("Likes")) {
                         LikesSection(likes: user.likes)
                     }
@@ -96,6 +102,8 @@ struct ProfileView: View {
 //
 //                        }
 //                    }
+                    // OPTIONAL ADDITION Settings (manage edit profile and logout here
+                    
                 }
                 .navigationTitle("Profile")
             } else {

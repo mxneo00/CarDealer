@@ -54,27 +54,6 @@ struct SignUpView: View {
             }
         }
     }
-    
-//    func signup() {
-//        let newUser = User(username: username, email: email, fname: fname, lname: lname, avatarURL: "globe", passwordDigest: password)
-//        
-//        guard !username.isEmpty, !email.isEmpty, !password.isEmpty else {
-//            error = "Username, email, and password are required"
-//            return
-//        }
-//        guard password == passwordConfirmation else {
-//            error = "Passwords do not match"
-//            return
-//        }
-//        //Create user in session
-//        ctx.insert(newUser)
-//        do {
-//            try session.currentUser = newUser
-//            print("Signup success")
-//        } catch {
-//            print("Signup failed: \(error)")
-//        }
-//    }
 }
 
 struct LoginView: View {
