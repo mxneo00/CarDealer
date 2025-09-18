@@ -120,21 +120,6 @@ struct ProfileView: View {
     let container = try! ModelContainer(for: User.self, Car.self, Listing.self, Like.self)
     let context = ModelContext(container)
     
-//    let car1 = Car(brand: "Toyota", model: "Corolla", year: 2022, price: 22000, carURL: "globe")
-//    let car2 = Car(brand: "Ford", model: "Mustang", year: 2023, price: 45000, carURL: "globe")
-//    
-//    let dummyUser = User(username: "DoeJohn", email: "djohn@yahoo.com", fname: "John", lname: "Doe", avatarURL: "globe", passwordDigest: "Password")
-//    //context.insert(dummyUser)
-//    
-//    let listing1 = Listing(id: UUID(), price: 21000, car: car1, seller: dummyUser, isSold: false)
-//    let listing2 = Listing(id: UUID(), price: 40000, car: car2, seller: dummyUser, isSold: true)
-//    let like1 = Like(id: UUID(), user: dummyUser, car: car1)
-//    
-//    let session = Session(container: container)
-//    session.currentUser = dummyUser
-    
     ProfileView()
         .environmentObject(Session.preview)
-//        .environmentObject(session)
-//        .environment(\.modelContext, ModelContext(container))
 }
