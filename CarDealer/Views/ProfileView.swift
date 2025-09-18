@@ -15,7 +15,7 @@ struct ProfileSection: View {
     
     var body: some View {
 //        Section(header: Text("Profile")) {
-            HStack {
+            LazyHStack {
                 Circle()
                     .fill(Color.gray.opacity(0.3))
                     .frame(width: 60, height: 60)

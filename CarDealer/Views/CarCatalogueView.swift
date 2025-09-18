@@ -65,7 +65,7 @@ struct CarRow: View{
     @ObservedObject var car: CarViewModel
     
     var body: some View {
-        VStack {
+        LazyVStack {
             if let url = car.url {
                 Image(url)
                     .resizable()
