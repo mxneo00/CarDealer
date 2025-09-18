@@ -15,9 +15,9 @@ struct SellTabView: View {
     @State private var brand: String = ""
     @State private var model: String = ""
     @State private var yearInput: String = ""
-    @State private var year: Int
+    @State private var year: Int?
     @State private var priceInput: String = ""
-    @State private var price: Float
+    @State private var price: Float?
     @State private var imageURL: String = ""
     
     var body: some View {
