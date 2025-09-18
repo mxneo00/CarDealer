@@ -33,7 +33,7 @@ struct SellTabView: View {
             // TODO: Make fully functioning
             Button("Create Listing") {
                 vm.createListing(ctx: ctx, user: session.currentUser)
-            }
+            }.buttonStyle(PillButtonStyle())
         }
     }
 }

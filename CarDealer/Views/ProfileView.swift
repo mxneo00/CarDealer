@@ -24,6 +24,8 @@ struct ProfileView: View {
      var users: [User]
     
     var body: some View {
+        // Change so that the initial view is just the profile section
+        // Make Listings and Likes into tabs and add a tab to go back to home page
         NavigationStack {
             if let user = session.currentUser {
                 List {

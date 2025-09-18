@@ -29,8 +29,7 @@ struct ContentView: View {
                     
                     Button("Log out"){
                         session.logout()
-                    }
-                    .padding(.top, 20)
+                    }.buttonStyle(PillButtonStyle())
                 } else {
                     NavigationLink("Log In", destination: LoginView())
                     NavigationLink("Sign Up", destination: SignUpView())

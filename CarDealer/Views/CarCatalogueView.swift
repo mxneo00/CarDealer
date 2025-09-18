@@ -37,8 +37,8 @@ struct CarRow: View{
                     .scaledToFit()
                     .frame(width: 150, height: 150)
             }
-        }
-        Text("\(car.brand) \(car.model) \(car.year, format: .number.grouping(.never)) $\(car.price, specifier: "%.0f")")
+            Text("\(car.brand) \(car.model) \(car.year, format: .number.grouping(.never)) $\(car.price, specifier: "%.0f")").cardStyle()
+        }.cardStyle()
     }
 }
 
