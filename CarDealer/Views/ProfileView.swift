@@ -15,19 +15,16 @@ struct ProfileSection: View {
     
     var body: some View {
 //        Section(header: Text("Profile")) {
-            LazyHStack {
+            LazyVStack {
                 Circle()
                     .fill(Color.gray.opacity(0.3))
                     .frame(width: 60, height: 60)
                     .overlay(Text(user.name().prefix(1)))
-                
-                VStack(alignment: .leading) {
-                    Text(user.name())
-                        .font(.headline)
-                    Text(user.email)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                }
+                Text(user.name())
+                    .font(.headline)
+                Text(user.email)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
             }
 //        }
     }
@@ -86,7 +83,7 @@ struct ProfileView: View {
     
     var body: some View {
         NavigationStack {
-            if let user = users.first {
+            if let user = session.currentUser {
                 List {
                     Section(header: Text("Profile")) {
                         ProfileSection(user: user)
