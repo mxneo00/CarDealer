@@ -17,7 +17,7 @@ struct SellTabView: View {
     }
 }
 
-struct CarListingView: View {
+struct CarDetailView: View {
     @EnvironmentObject var session: Session
     
     let listing: Listing?

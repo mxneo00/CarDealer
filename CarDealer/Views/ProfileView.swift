@@ -38,7 +38,7 @@ struct ListingSection: View {
                     .foregroundColor(.secondary)
             } else {
                 ForEach(listings) { listing in
-                    NavigationLink(destination: CarListingView(listing: listing)) {
+                    NavigationLink(destination: CarDetailView(listing: listing)) {
                         LazyVStack(alignment: .leading) {
                             Text("\(listing.car.brand) \(listing.car.model)")
                             Text("\(listing.price, specifier: "%.2f")")
@@ -59,7 +59,7 @@ struct LikesSection: View {
                     .foregroundColor(.secondary)
             } else {
                 ForEach(likes) { like in
-                    NavigationLink(destination: CarListingView(car: like.car)) {
+                    NavigationLink(destination: CarDetailView(car: like.car)) {
                         Text("\(like.car.brand) \(like.car.model) \(like.car.year)")
                     }
                 }
