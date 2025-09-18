@@ -8,48 +8,7 @@
 // TODO Add ability to also include any new listings created
 
 import SwiftUI
-
-class CarViewModel: ObservableObject, Identifiable {
-    @Published var dto: CarDTO? = nil
-    
-    let id: UUID = UUID()
-    let brand: String
-    let model: String
-    let year: Int
-    @Published var price: Float
-    let horsepower: Int
-    let fuelType: String
-    let engine: String
-    let url: String?
-    
-    init(dto: CarDTO) {
-        self.dto = dto
-        self.brand = dto.brand
-        self.model = dto.model
-        self.year = dto.year
-        self.price = dto.price
-        self.horsepower = dto.specs.horsepower
-        self.fuelType = dto.specs.fuelType
-        self.engine = dto.specs.engine
-        self.url = dto.url
-    }
-}
-
-class CarCollection: ObservableObject, Identifiable {
-    @Published var cars: [CarViewModel] = []
-    
-    init() {
-        let loader = JSONLoader()
-        do {
-            let carDTOs = try loader.load([CarDTO].self, path: "cars.json")
-            for car in carDTOs {
-                cars.append(CarViewModel(dto: car))
-            }
-        } catch {
-            print("Error loading json")
-        }
-    }
-}
+import SwiftData
 
 struct CarCard: View {
     @ObservedObject var car: CarViewModel
