@@ -15,25 +15,29 @@ struct SellTabView: View {
     @StateObject private var vm = SellTabViewModel()
     
     var body: some View {
-        Form {
-            Section("Brand") {
+        VStack {
+            StyledSection(title: "Brand") {
                 TextField("Brand", text: $vm.brand)
+                    .formFieldStyle()
             }
-            Section("Model") {
+            StyledSection(title: "Model") {
                 TextField("Model", text: $vm.model)
+                    .formFieldStyle()
             }
-            Section("Year") {
+            StyledSection(title: "Year") {
                 TextField("Year", text: $vm.yearInput)
+                    .formFieldStyle()
                     .keyboardType(.numberPad)
             }
-            Section("Price") {
+            StyledSection(title: "Price") {
                 TextField("Price", text: $vm.priceInput)
+                    .formFieldStyle()
                     .keyboardType(.numberPad)
             }
             Button("Create Listing") {
                 vm.createListing(ctx: ctx, user: session.currentUser)
             }.buttonStyle(PillButtonStyle())
-        }
+        }.formStyle().padding(.horizontal)
     }
 }
 
