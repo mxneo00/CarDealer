@@ -14,21 +14,52 @@ struct ProfileSection: View {
     let user: User
     
     var body: some View {
-            LazyVStack {
-                Circle()
-                    .fill(Color.gray.opacity(0.3))
-                    .frame(width: 60, height: 60)
-                    .overlay(Text(user.name().prefix(1)))
-                Text(user.name())
-                    .font(.headline)
-                Text(user.email)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
+            VStack {
+                // Old
+                //Circle()
+                //    .fill(Color.gray.opacity(0.3))
+                //    .frame(width: 60, height: 60)
+                //    .overlay(Text(user.name().prefix(1)))
+                //Text(user.name())
+                //    .font(.headline)
+                //Text(user.email)
+                //    .font(.subheadline)
+                //    .foregroundColor(.secondary)
+
+                // Redesigned
+                Image(session.currentUser!.avatarURL)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 300, height: 300)
+                    .clipShape(Circle())
+                    .overlay(Circle().stroke(.blue, lineWidth: 6))
+                    .padding(20)
+
+                ZStack {
+                    Rectangle()
+                        .fill(.white)
+                        .ignoreSafeArea(edges: .all)
+                    VStack(alignment: .leading) {
+                        StyledSection(title: "Name") {
+                            if let user = session.currentUser {
+                                Text(user.name())
+                            } else {
+                                Text("No name")
+                            }
+                        }
+                        Spacer()
+                        StyledSection(title: "Email") {
+                            Text(session.currentUser!.email)
+                        }
+                        Spacer()
+                    }.padding(48)
+                }
             }
     }
 }
 
 // User Listings Section
+// ??? 
 struct ListingSection: View {
     let listings: [Listing]
     
@@ -50,6 +81,7 @@ struct ListingSection: View {
     }
 }
 // User Likes Section
+// ???
 struct LikesSection: View {
     let likes: [Like]
     

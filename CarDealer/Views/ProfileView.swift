@@ -26,26 +26,28 @@ struct ProfileView: View {
     var body: some View {
         TabView {
             NavigationStack {
-                if let user = session.currentUser {
-                    VStack(spacing: 20) {
-                        ProfileSection(user: user)
-                        
-                        HStack {
-                            NavigationLink("Edit Profile") {
-                                EditProfileView()
+                ThemedBackground {
+                    if let user = session.currentUser {
+                        VStack(spacing: 20) {
+                            ProfileSection(user: user)
+                            
+                            HStack {
+                                NavigationLink("Edit Profile") {
+                                    EditProfileView()
+                                }
+                                Spacer()
+                                Button("Logout") {
+                                    session.logout()
+                                }.buttonStyle(PillButtonStyle())
                             }
-                            Spacer()
-                            Button("Logout") {
-                                session.logout()
-                            }.buttonStyle(PillButtonStyle())
+                            .padding(.horizontal)
                         }
-                        .padding(.horizontal)
-                    }
-                    .padding()
-                    .navigationTitle("Profile")
-                } else {
-                    Text("No user signed in")
+                        .padding()
                         .navigationTitle("Profile")
+                    } else {
+                        Text("No user signed in")
+                            .navigationTitle("Profile")
+                    }
                 }
             }
             .tabItem {
@@ -54,14 +56,18 @@ struct ProfileView: View {
             
             if let user = session.currentUser {
                 NavigationStack {
-                    if user.listings.isEmpty {
-                        Text("No Listings")
-                    } else {
-                        ListingSection(listings: user.listings)
-                            .navigationTitle("Listings")
-                    }
-                    NavigationLink(destination: SellTabView()) {
-                        Label("Create new Listing", systemImage: "plus.circle.fill")
+                    ThemedBackground {
+                        StyledSection(title: Listings){
+                            if user.listings.isEmpty {
+                                Text("No Listings")
+                            } else {
+                                ListingSection(listings: user.listings)
+                                    .navigationTitle("Listings")
+                            }
+                            NavigationLink(destination: SellTabView()) {
+                                Label("Create new Listing", systemImage: "plus.circle.fill")
+                            }
+                        }
                     }
                 }
                 .tabItem {
@@ -69,8 +75,12 @@ struct ProfileView: View {
                 }
                 
                 NavigationStack {
-                    LikesSection(likes: user.likes)
-                        .navigationTitle("Likes")
+                    ThemedBackground {
+                        StyledSection(title: "Likes") {
+                            LikesSection(likes: user.likes)
+                                .navigationTitle("Likes")
+                        }
+                    }
                 }
                 .tabItem {
                     Label("Likes", systemImage: "heart.fill")

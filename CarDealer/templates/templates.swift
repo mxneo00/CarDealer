@@ -18,7 +18,7 @@ struct ThemedBackground<Content: View>: View {
     var body: some View{
         ZStack {
             RadialGradient(
-                gradient: Gradient(Colors: [brnad.palette.secondary,
+                gradient: Gradient(colors: [brand.palette.secondary,
                     brand.palette.secondary,
                     brand.palette.primary
                 ]),
