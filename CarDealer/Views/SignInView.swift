@@ -22,42 +22,44 @@ struct SignUpView: View {
     @State private var error: String? = nil
     
     var body: some View {
-        Form {
-            Section("Username") {
-                TextField("Enter username", text: $username)
-                    .autocapitalization(.none)
-                    .autocorrectionDisabled(true)
+        ThemedBackground {
+            Form {
+                Section("Username") {
+                    TextField("Enter username", text: $username)
+                        .autocapitalization(.none)
+                        .autocorrectionDisabled(true)
+                }
+                Section("First Name") {
+                    TextField("First name", text: $fname)
+                        .autocorrectionDisabled(true)
+                }
+                Section("Last Name") {
+                    TextField("Last name", text: $lname)
+                        .autocorrectionDisabled(true)
+                }
+                Section("Email") {
+                    TextField("Email", text: $email)
+                        .autocapitalization(.none)
+                        .autocorrectionDisabled(true)
+                }
+                Section("Password") {
+                    SecureField("Password", text: $password)
+                        .autocapitalization(.none)
+                        .autocorrectionDisabled(true)
+                }
+                Section("Confirm Password") {
+                    SecureField("Confirm password", text: $passwordConfirmation)
+                        .autocapitalization(.none)
+                        .autocorrectionDisabled(true)
+                }
             }
-            Section("First Name") {
-                TextField("First name", text: $fname)
-                    .autocorrectionDisabled(true)
-            }
-            Section("Last Name") {
-                TextField("Last name", text: $lname)
-                    .autocorrectionDisabled(true)
-            }
-            Section("Email") {
-                TextField("Email", text: $email)
-                    .autocapitalization(.none)
-                    .autocorrectionDisabled(true)
-            }
-            Section("Password") {
-                SecureField("Password", text: $password)
-                    .autocapitalization(.none)
-                    .autocorrectionDisabled(true)
-            }
-            Section("Confirm Password") {
-                SecureField("Confirm password", text: $passwordConfirmation)
-                    .autocapitalization(.none)
-                    .autocorrectionDisabled(true)
-            }
-        }
-        Button("Sign Up") {
-            // Create session on signup completion
-            do {
-                try session.signup(email: email, lname: lname, fname: fname, password: password, username: username)
-            } catch {
-                print("Signup failed \(error)")
+            Button("Sign Up") {
+                // Create session on signup completion
+                do {
+                    try session.signup(email: email, lname: lname, fname: fname, password: password, username: username)
+                } catch {
+                    print("Signup failed \(error)")
+                }
             }
         }
     }
@@ -77,25 +79,26 @@ struct LoginView: View {
     
     var body: some View {
         NavigationStack {
-            Form {
-                Section("Username") {
-                    TextField("Enter username", text: $username)
-                        .autocapitalization(.none)
-                        .autocorrectionDisabled(true)
-                }
-                Section("Password") {
-                    SecureField("Enter password", text: $password)
-                        .autocapitalization(.none)
-                        .autocorrectionDisabled(true)
-                }
-                Button(action: login) {
-                    Text("Login")
-                }
-                Section("New User") {
-                    NavigationLink("Sign Up", destination: SignUpView())
+            ThemedBackground {
+                Form {
+                    Section("Username") {
+                        TextField("Enter username", text: $username)
+                            .autocapitalization(.none)
+                            .autocorrectionDisabled(true)
+                    }
+                    Section("Password") {
+                        SecureField("Enter password", text: $password)
+                            .autocapitalization(.none)
+                            .autocorrectionDisabled(true)
+                    }
+                    Button(action: login) {
+                        Text("Login")
+                    }.buttonStyle(PillButtonStyle())
+                    Section("New User") {
+                        NavigationLink("Sign Up", destination: SignUpView())
+                    }
                 }
             }
-            
         }
     }
     
