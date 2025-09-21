@@ -79,7 +79,7 @@ struct FormTemplateView: View {
                 }
 
                 Button(action: something) {
-                    text("Submit")
+                    Text("Submit")
                 }.buttonStyle(PillButtonStyle())
             }.formStyle()
         }

@@ -23,32 +23,38 @@ struct SignUpView: View {
     
     var body: some View {
         ThemedBackground {
-            Form {
-                Section("Username") {
+            VStack {
+                StyledSection(title: "Username") {
                     TextField("Enter username", text: $username)
+                        .formFieldStyle()
                         .autocapitalization(.none)
                         .autocorrectionDisabled(true)
                 }
-                Section("First Name") {
+                StyledSection(title: "First Name") {
                     TextField("First name", text: $fname)
+                        .formFieldStyle()
                         .autocorrectionDisabled(true)
                 }
-                Section("Last Name") {
+                StyledSection(title: "Last Name") {
                     TextField("Last name", text: $lname)
+                        .formFieldStyle()
                         .autocorrectionDisabled(true)
                 }
-                Section("Email") {
+                StyledSection(title: "Email") {
                     TextField("Email", text: $email)
+                        .formFieldStyle()
                         .autocapitalization(.none)
                         .autocorrectionDisabled(true)
                 }
-                Section("Password") {
+                StyledSection(title: "Password") {
                     SecureField("Password", text: $password)
+                        .formFieldStyle()
                         .autocapitalization(.none)
                         .autocorrectionDisabled(true)
                 }
-                Section("Confirm Password") {
+                StyledSection(title: "Confirm Password") {
                     SecureField("Confirm password", text: $passwordConfirmation)
+                        .formFieldStyle()
                         .autocapitalization(.none)
                         .autocorrectionDisabled(true)
                 }
@@ -61,7 +67,7 @@ struct SignUpView: View {
                     print("Signup failed \(error)")
                 }
             }
-        }
+        }.formStyle().padding(.horizontal)
     }
 }
 
@@ -80,24 +86,26 @@ struct LoginView: View {
     var body: some View {
         NavigationStack {
             ThemedBackground {
-                Form {
-                    Section("Username") {
+                VStack(spacing: 24) {
+                    StyledSection(title: "Username") {
                         TextField("Enter username", text: $username)
+                            .formFieldStyle()
                             .autocapitalization(.none)
                             .autocorrectionDisabled(true)
                     }
-                    Section("Password") {
+                    StyledSection(title: "Password") {
                         SecureField("Enter password", text: $password)
+                            .formFieldStyle()
                             .autocapitalization(.none)
                             .autocorrectionDisabled(true)
                     }
                     Button(action: login) {
                         Text("Login")
                     }.buttonStyle(PillButtonStyle())
-                    Section("New User") {
+                    StyledSection(title: "New User?") {
                         NavigationLink("Sign Up", destination: SignUpView())
                     }
-                }
+                }.formStyle().padding(.horizontal)
             }
         }
     }
