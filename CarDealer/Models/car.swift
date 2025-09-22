@@ -14,7 +14,7 @@ import SwiftData
     var model: String
     var year: Int
     var price: Float
-    var carURL: String = "default_car"
+    var carURL: String
     var fuelType: String?
     var engine: String?
     var horsepower: Int?
@@ -25,7 +25,13 @@ import SwiftData
         return "\(year) \(brand) \(model)"
     }
     
-    init(brand: String, model: String, year: Int, price: Float, carURL: String, miles: Int, owner: User? = nil) {
+    init(brand: String,
+         model: String,
+         year: Int,
+         price: Float,
+         carURL: String = "default_car",
+         miles: Int,
+         owner: User? = nil) {
         self.brand = brand
         self.model = model
         self.year = year

@@ -76,15 +76,15 @@ class CarAPI {
         return cars
     }
     
-    func toCarModel() throws -> [CarViewModel] {
-        var CVMs: [CarViewModel] = []
-        if self.carDTOs.isEmpty {
-            //ValidationError.valueOutOfRange(message: "JSON has not been loaded")
-            print("Error")
-        } else {
-            for dto in carDTOs {
-                
-            }
-        }
-    }
+//    func toCarModel() throws -> [CarViewModel] {
+//        var carVMs: [CarViewModel] = []
+//        if self.carDTOs.isEmpty {
+//            //ValidationError.valueOutOfRange(message: "JSON has not been loaded")
+//            print("Error")
+//        } else {
+//            for dto in carDTOs {
+//                
+//            }
+//        }
+//    }
 }

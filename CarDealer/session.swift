@@ -88,8 +88,8 @@ class MockSession: Session {
     }
     
     var previewUser: User {
-        let car1 = Car(brand: "Toyota", model: "Corolla", year: 2022, price: 22000, carURL: "globe")
-        let car2 = Car(brand: "Ford", model: "Mustang", year: 2023, price: 45000, carURL: "globe")
+        let car1 = Car(brand: "Toyota", model: "Corolla", year: 2022, price: 22000, carURL: "globe", miles: 50000)
+        let car2 = Car(brand: "Ford", model: "Mustang", year: 2023, price: 45000, carURL: "globe",miles: 50000)
         
         _ = Listing(price: 21000, car: car1, seller: user2)
         _ = Listing(price: 40000, car: car2, seller: user2)

@@ -25,7 +25,7 @@ struct ContentView: View {
                         .font(.title2)
                         .padding()
                     NavigationLink("Profile", destination: ProfileView())
-                    NavigationLink("Car Catalogue", destination: CarCatalogueView())
+                    NavigationLink("Car Catalogue", destination: CarCatalogueView(carVM: carVM))
                     
                     Button("Log out"){
                         session.logout()

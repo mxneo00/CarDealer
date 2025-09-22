@@ -16,17 +16,6 @@ struct ProfileSection: View {
     
     var body: some View {
             VStack {
-                // Old
-                //Circle()
-                //    .fill(Color.gray.opacity(0.3))
-                //    .frame(width: 60, height: 60)
-                //    .overlay(Text(user.name().prefix(1)))
-                //Text(user.name())
-                //    .font(.headline)
-                //Text(user.email)
-                //    .font(.subheadline)
-                //    .foregroundColor(.secondary)
-
                 // Redesigned
                 Image(session.currentUser!.avatarURL)
                     .resizable()
@@ -70,7 +59,7 @@ struct ListingSection: View {
                     .foregroundColor(.secondary)
             } else {
                 ForEach(listings) { listing in
-                    NavigationLink(destination: CarDetailView(listing: listing)) {
+                    NavigationLink(destination: CarDetailView(carVM: carVM)) {
                         LazyVStack(alignment: .leading) {
                             Text("\(listing.car.brand) \(listing.car.model)")
                             Text("\(listing.price, specifier: "%.2f")")

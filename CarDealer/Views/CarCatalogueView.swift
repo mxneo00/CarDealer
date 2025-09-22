@@ -11,15 +11,10 @@ import SwiftUI
 import SwiftData
 
 struct CarCard: View {
-    //let CVM: CarViewModel
-    @ObservedObject var CVM: CarViewModel
+    let carVM: CarViewModel
     
     var body: some View {
         VStack {
-            // Old Card
-            //Image(systemName: "globe")
-            //Text("\(CVM.brand) \(CVM.model) \(CVM.year)")
-
             // New Card
             VStack (alignment: .leading, spacing: 12) {
                 // Image
@@ -54,22 +49,22 @@ struct CarCard: View {
 
                 // Car info
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(CVM.brand)
+                    Text(carVM.car.brand)
                         .font(.headline)
-                    Text(CVM.model)
+                    Text(carVM.car.model)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     
                     HStack(spacing: 16) {
-                        Label("\(CVM.year)", systemImage: "gauge")
-                        Label("\(CVM.fuelType)", systemImage: "fuelPump")
+                        Label("\(carVM.car.year)", systemImage: "gauge")
+                        Label("\(carVM.car.fuelType)", systemImage: "fuelPump")
                         //Label("\(CVM.car.year)", systemImage: "paintpalette")
                         //Label("\(CVM.car.year)", systemImage: "gearshape")
                     }
                     .font(.caption)
                     .foregroundColor(.secondary)
                 }.padding(9)
-                NavigationLink(destination: CarDetailView(listing: Listing)) {
+                NavigationLink(destination: CarDetailView(carVM: carVM)) {
                     Text("View Details")
                         .font(.callout.bold())
                         .frame(maxWidth: .infinity)
@@ -89,46 +84,20 @@ struct CarCard: View {
     }
 }
 
-// Old
-//struct CarRow: View{
-//    @ObservedObject var CVM: CarViewModel
-//    
-//    var body: some View {
-//        LazyVStack {
-//            if let url = CVM.url {
-//                Image(url)
-//                    .resizable()
-//                    .scaledToFit()
-//                    .frame(width:150, height: 150)
-//            } else {
-//                Image("generic")
-//                    .resizable()
-//                    .scaledToFit()
-//                    .frame(width: 150, height: 150)
-//            }
-//            Text("\(CVM.brand) \(CVM.model) \(CVM.year, format: .number.grouping(.never)) $\(CVM.price, specifier: "%.0f")").cardStyle()
-//        }.cardStyle()
-//    }
-//}
-
 struct CarCatalogueView: View {
-    @StateObject var collection: CarCollection = CarCollection()
+    @StateObject private var collection: CarCollection = CarCollection()
+    
+    init(collection: CarCollection) {
+        _collection = StateObject(wrappedValue: collection)
+    }
     
     var body: some View {
-        // Old
-        //ScrollView {
-        //    ForEach(collection.cars) { car in
-        //        NavigationLink(destination: CarCard(car: car)) {
-        //            CarRow(car: car)
-        //        }
-        //    }
-        //}
 
         ThemedBackground {
             ScrollView {
                 LazyVStack {
-                    ForEach(collection.cars) { CVM in
-                        CarCard(CVM: CVM)
+                    ForEach(collection.carVMs) { carVM in
+                        CarCard(carVM: carVM)
                     }
                 }
                 .padding(.vertical)
@@ -137,6 +106,6 @@ struct CarCatalogueView: View {
     }
 }
 
-#Preview {
-    CarCatalogueView()
-}
+//#Preview {
+//    CarCatalogueView()
+//}
