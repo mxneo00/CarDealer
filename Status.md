@@ -1,22 +1,29 @@
 ## Completed
-Login and Sign up pages
+Login and Sign up pages   
 Session   
 Home/Loading Page   
 Profile page   
-CarDetailView (Basic)   
+CarDetailView   
 SwiftData Models   
 Selling/Listings    
+theme and styling (Could use improvements)   
+Environments   
 
 
 ## In progress
 SwiftData implementation   
 Error Handling   
-Likes    
-theme and styling   
+Likes (optional addition)    
+Buy Flow   
+Edit Profile   
+Mock Data    
+
 
 
 ## ToDo
-Buy Flow   
-Environments   
-Test All pages   
-Test full app functionality   
+### Final Project additions
+Camera Roll   
+Map View   
+### Optional Additions
+Camera View   
+API implementation   
