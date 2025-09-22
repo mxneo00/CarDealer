@@ -13,9 +13,8 @@ struct CarCard: View {
     
     var body: some View {
         VStack {
-            // New Card
+            // Card Outline
             VStack (alignment: .leading, spacing: 12) {
-                // Image
                 ZStack(alignment: .topLeading) {
                     Color.gray.opacity(0.4)
                     Image(systemName: "car.fill")
@@ -55,7 +54,7 @@ struct CarCard: View {
                     
                     HStack(spacing: 16) {
                         Label("\(carVM.car.year, format: .number.grouping(.never))", systemImage: "gauge")
-                        Label("\(carVM.car.fuelType)", systemImage: "fuelPump")
+                        //Label("\(carVM.car.fuelType)", systemImage: "fuelPump")
                         //Label("\(CVM.car.year)", systemImage: "paintpalette")
                         //Label("\(CVM.car.year)", systemImage: "gearshape")
                     }

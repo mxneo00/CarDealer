@@ -23,15 +23,20 @@ struct EditProfileView: View {
                 StyledSection(title: "First Name") {
                     TextField("first name", text: $userVM.user.fname).formFieldStyle()
                 }
-                Button(action: updateEmail) {
+                StyledSection(title: "Last Name") {
+                    TextField("last name", text: $userVM.user.lname).formFieldStyle()
+                }
+                // TODO: Update Profile Image
+                Button(action: update) {
                     Text("Update")
                 }.buttonStyle(PillButtonStyle())
             }.formStyle()
         }
     }
     
-    func updateEmail() {
+    func update() {
         userVM.updateEmail(email: userVM.user.email)
+        userVM.updateName(fname: userVM.user.fname, lname: userVM.user.lname)
     }
 }
 
@@ -49,9 +54,10 @@ struct ProfileView: View {
                     VStack(spacing: 20) {
                         ProfileSection(user: user)
                         HStack {
-//                                NavigationLink("Edit Profile") {
-//                                    EditProfileView()
-//                                }
+                            //TODO: Implement editing
+//                            NavigationLink("Edit Profile") {
+//                                EditProfileView()
+//                            }
                             Spacer()
                             Button("Logout") {
                                 session.logout()

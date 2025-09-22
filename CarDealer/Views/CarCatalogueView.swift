@@ -31,7 +31,3 @@ struct CarCatalogueView: View {
         }
     }
 }
-
-//#Preview {
-//    CarCatalogueView()
-//}

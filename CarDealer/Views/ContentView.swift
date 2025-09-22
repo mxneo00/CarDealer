@@ -4,6 +4,7 @@
 //
 //  Created by Katellyn Hyker on 9/11/25.
 //
+// Landing Page/ Home Page
 
 import SwiftUI
 import SwiftData

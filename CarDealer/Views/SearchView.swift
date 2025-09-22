@@ -4,6 +4,8 @@
 //
 //  Created by Katellyn Hyker on 9/18/25.
 //
+// BASIC SEARCH ENGINE (Currently only shows sample cars)
+// TODO: Implement to actually search through catalogue
 
 import SwiftUI
 import SwiftData

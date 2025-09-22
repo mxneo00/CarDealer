@@ -4,6 +4,7 @@
 //
 //  Created by Katellyn Hyker on 9/22/25.
 //
+// Form for users to fill out to create new Listings
 
 import SwiftUI
 
@@ -13,28 +14,30 @@ struct SellView: View {
     @StateObject private var sellVM = SellTabViewModel()
     
     var body: some View {
-        VStack {
-            StyledSection(title: "Brand") {
-                TextField("Brand", text: $sellVM.brand)
-                    .formFieldStyle()
-            }
-            StyledSection(title: "Model") {
-                TextField("Model", text: $sellVM.model)
-                    .formFieldStyle()
-            }
-            StyledSection(title: "Year") {
-                TextField("Year", text: $sellVM.yearInput)
-                    .formFieldStyle()
-                    .keyboardType(.numberPad)
-            }
-            StyledSection(title: "Price") {
-                TextField("Price", text: $sellVM.priceInput)
-                    .formFieldStyle()
-                    .keyboardType(.decimalPad)
-            }
-            Button("Create Listing") {
-                sellVM.createListing(ctx: ctx, user: session.currentUser)
-            }.buttonStyle(PillButtonStyle())
-        }.formStyle().padding(.horizontal)
+        ThemedBackground {
+            VStack {
+                StyledSection(title: "Brand") {
+                    TextField("Brand", text: $sellVM.brand)
+                        .formFieldStyle()
+                }
+                StyledSection(title: "Model") {
+                    TextField("Model", text: $sellVM.model)
+                        .formFieldStyle()
+                }
+                StyledSection(title: "Year") {
+                    TextField("Year", text: $sellVM.yearInput)
+                        .formFieldStyle()
+                        .keyboardType(.numberPad)
+                }
+                StyledSection(title: "Price") {
+                    TextField("Price", text: $sellVM.priceInput)
+                        .formFieldStyle()
+                        .keyboardType(.decimalPad)
+                }
+                Button("Create Listing") {
+                    sellVM.createListing(ctx: ctx, user: session.currentUser)
+                }.buttonStyle(PillButtonStyle())
+            }.formStyle().padding(.horizontal)
+        }
     }
 }
