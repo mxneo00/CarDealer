@@ -65,3 +65,26 @@ struct LikeDTO: Identifiable, Codable {
         case user, car
     }
 }
+
+class CarAPI {
+    private let url = URL(string: "https://storage.googleapis.com/cop4665/api_cars.json")!
+    private var carDTOs: [CarDTO] = []
+    
+    func fetchCloudJSON() async throws -> [CarDTO] {
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let cars = try JSONDecoder().decode([CarDTO].self, from: data)
+        return cars
+    }
+    
+    func toCarModel() throws -> [CarViewModel] {
+        var CVMs: [CarViewModel] = []
+        if self.carDTOs.isEmpty {
+            //ValidationError.valueOutOfRange(message: "JSON has not been loaded")
+            print("Error")
+        } else {
+            for dto in carDTOs {
+                
+            }
+        }
+    }
+}

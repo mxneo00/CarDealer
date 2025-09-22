@@ -15,18 +15,23 @@ import SwiftData
     var year: Int
     var price: Float
     var carURL: String = "default_car"
+    var fuelType: String?
+    var engine: String?
+    var horsepower: Int?
+    var miles: Int
     var owner: User?
     
     func carName() -> String {
         return "\(year) \(brand) \(model)"
     }
     
-    init(brand: String, model: String, year: Int, price: Float, carURL: String, owner: User? = nil) {
+    init(brand: String, model: String, year: Int, price: Float, carURL: String, miles: Int, owner: User? = nil) {
         self.brand = brand
         self.model = model
         self.year = year
         self.price = price
         self.carURL = carURL
+        self.miles = miles
         self.owner = owner
     }
     

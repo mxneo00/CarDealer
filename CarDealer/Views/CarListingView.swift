@@ -42,50 +42,33 @@ struct SellTabView: View {
 }
 
 struct CarDetailView: View {
-    @Environment(\.modelContext) var ctx
-    @EnvironmentObject var session: Session
-//    @StateObject private var vm = LikesViewModel()
-    
-    let listing: Listing?
-    let car: Car?
-    
-    init(listing: Listing) {
-        self.listing = listing
-        self.car = nil
-        //_vm = StateObject(wrappedValue: LikesViewModel(ctx: ctx, user: User()))
-    }
-    
-    init(car: Car) {
-        self.listing = nil
-        self.car = car
-       //_vm = StateObject(wrappedValue: LikesViewModel(ctx: ctx, user: User()))
-    }
-    
+    @ObservedObject var CVM: CarViewModel
     
     var body: some View {
-        VStack {
-            if let listing = listing {
-                Text("Listing: \(listing.car.brand) \(listing.car.model) \(listing.car.year)")
-            } else if let car = car {
-                Text("Car: \(car.brand) \(car.model) \(car.year)")
-            } else {
-                Text("No data")
+        ThemedBackground {
+            VStack {
+                Image(systemName: "car.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 250)
+                    .clipped()
+                VStack {
+                    HStack {
+                        Image("default_avatar")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 150, height: 150)
+                            .clipShape(Circle())
+                            .overlay(Circle().stroke(.blue, lineWidth: 4))
+                        Text(CVM.car.owner.name)
+                    }
+                }.padding()
+                Text("\(CVM.car.price)")
+//                NavigationLink(desination: OrderView(CVM: CVM)) {
+//                    Text("Place Order")
+//                }.buttonStyle(PillButtonStyle())
+//                Spacer()
             }
-//            if let car = car ?? listing?.car, let currentUser = session.currentUser {
-//                Button(action: {
-//                    try? vm.toggleLike(for: car)
-//                }) {
-//                    Image(systemName: vm.isLiked(car: car) ? "heart.fill" : "heart")
-//                        .foregroundColor(.red)
-//                }
-//            }
         }
-//        .onAppear {
-//            if let currentUser = session.currentUser {
-//                vm.ctx = ctx
-//                vm.user = currentUser
-//                vm.getLikes()
-//            }
-//        }
     }
 }
