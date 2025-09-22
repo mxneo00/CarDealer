@@ -21,7 +21,10 @@ enum OrderStatus: String, Codable {
     @Relationship(inverse: \User.sellOrders) var seller: User?
     @Relationship(inverse: \Car.orders) var car: Car?
 
-    init(buyer: User? = nil,seller: User? = nil, car: Car? = nil, status: OrderStatus = .pending) {
+    init(buyer: User? = nil,
+         seller: User? = nil,
+         car: Car? = nil,
+         status: OrderStatus = .pending) {
         self.status = status
         self.buyer = buyer
         self.seller = seller

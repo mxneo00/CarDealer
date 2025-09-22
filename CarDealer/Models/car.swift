@@ -14,11 +14,11 @@ import SwiftData
     var model: String
     var year: Int
     var price: Float
-    var carURL: String
+    var carURL: String = "default_car"
     var fuelType: String?
     var engine: String?
     var horsepower: Int?
-    var miles: Int
+    var miles: Int = 0
     var owner: User?
     
     @Relationship(deleteRule: .nullify) var orders: [Order]
@@ -32,7 +32,7 @@ import SwiftData
          year: Int,
          price: Float,
          carURL: String = "default_car",
-         miles: Int,
+         miles: Int = 0,
          owner: User? = nil) {
         self.brand = brand
         self.model = model

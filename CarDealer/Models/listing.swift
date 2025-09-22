@@ -14,13 +14,13 @@ import SwiftData
     var updatedAt: Double = Date().timeIntervalSince1970
     var price: Float
     var car: Car
-    var seller: User
+    var seller: User?
     var isSold: Bool = false
     
-    init(price: Float, car: Car, seller: User, isSold: Bool = false) {
+    init(price: Float, car: Car, seller: User? = nil, isSold: Bool = false) {
         self.price = price
         self.car = car
         self.seller = seller
-        self.isSold = false
+        self.isSold = isSold
     }
 }

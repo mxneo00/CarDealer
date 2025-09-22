@@ -23,14 +23,19 @@ import SwiftData
     @Relationship var buyOrders: [Order] = []
     @Relationship var sellOrders: [Order] = []
     @Relationship(inverse: \Car.owner) var cars: [Car] = []
-    @Relationship(deleteRule: .cascade) var likes: [Like] = []
+    @Relationship(deleteRule: .cascade, inverse: \Like.user) var likes: [Like] = []
     @Relationship(inverse: \Listing.seller) var listings: [Listing] = []
     
     func name() -> String {
         return "\(fname) \(lname)"
     }
     
-    init(username: String, email: String, fname: String, lname: String, avatarURL: String, passwordDigest: String) {
+    init(username: String,
+         email: String,
+         fname: String,
+         lname: String,
+         avatarURL: String = "default_avatar",
+         passwordDigest: String) {
         self.username = username
         self.email = email
         self.fname = fname
