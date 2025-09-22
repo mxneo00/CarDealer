@@ -3,8 +3,7 @@
 //  CarDealer
 //
 //  Created by Katellyn Hyker on 9/11/25.
-// View Specific car listing data
-// Create Sell Tab View (Users create new car listings)
+// View Specific Car Details
 
 import SwiftUI
 import SwiftData

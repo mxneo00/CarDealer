@@ -15,10 +15,18 @@ struct ContentView: View {
         NavigationView {
             ThemedBackground {
                 VStack(spacing: 40){
-                    Text("CarDealer")
+                    Text("Lume Cars")
                         .font(.largeTitle)
                         .bold()
                         .padding(.top, 50)
+                        .foregroundColor(Color("accent"))
+                    Spacer()
+                    Image("logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200, height: 200)
+                        .clipShape(Circle())
+                        .shadow(radius: 5)
                     Spacer()
                     
                     if let user = session.currentUser {
@@ -37,6 +45,7 @@ struct ContentView: View {
                         NavigationLink("Log In", destination: LoginView())
                         NavigationLink("Sign Up", destination: SignUpView())
                         NavigationLink("Car Catalogue", destination: CarCatalogueView())
+                        NavigationLink("Search", destination: SearchView())
                     }
                     Spacer()
                 }

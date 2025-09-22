@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct PillButtonStyle: ButtonStyle {
+    @Environment(\.theme) private var theme
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(maxWidth: .infinity)
             .padding(.vertical, 12)
-            .background(Capsule().fill(configuration.isPressed ? .blue.opacity(0.7) : .blue))
+            .background(Capsule().fill(configuration.isPressed ? theme.palette.buttonColor.opacity(0.7) : theme.palette.buttonColor))
             .foregroundStyle(.white)
             .animation(.easeInOut(duration: 0.15), value: configuration.isPressed)
     }

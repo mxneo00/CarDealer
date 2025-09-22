@@ -27,47 +27,37 @@ struct SignUpView: View {
                 StyledSection(title: "Username") {
                     TextField("Enter username", text: $username)
                         .formFieldStyle()
-//                        .autocapitalization(.none)
-//                        .autocorrectionDisabled(true)
                 }
                 StyledSection(title: "First Name") {
                     TextField("First name", text: $fname)
                         .formFieldStyle()
-//                        .autocorrectionDisabled(true)
                 }
                 StyledSection(title: "Last Name") {
                     TextField("Last name", text: $lname)
                         .formFieldStyle()
-//                        .autocorrectionDisabled(true)
                 }
                 StyledSection(title: "Email") {
                     TextField("Email", text: $email)
                         .formFieldStyle()
-//                        .autocapitalization(.none)
-//                        .autocorrectionDisabled(true)
                 }
                 StyledSection(title: "Password") {
                     SecureField("Password", text: $password)
                         .formFieldStyle()
-//                        .autocapitalization(.none)
-//                        .autocorrectionDisabled(true)
                 }
                 StyledSection(title: "Confirm Password") {
                     SecureField("Confirm password", text: $passwordConfirmation)
                         .formFieldStyle()
-//                        .autocapitalization(.none)
-//                        .autocorrectionDisabled(true)
+
                 }
-            }
-            Button("Sign Up") {
-                // Create session on signup completion
-                do {
-                    try session.signup(email: email, lname: lname, fname: fname, password: password, username: username)
-                } catch {
-                    print("Signup failed \(error)")
-                }
-            }
-        }.formStyle().padding(.horizontal)
+                Button("Sign Up") {
+                    do {
+                        try session.signup(email: email, lname: lname, fname: fname, password: password, username: username)
+                    } catch {
+                        print("Signup failed \(error)")
+                    }
+                }.buttonStyle(PillButtonStyle())
+            }.formStyle().padding(.horizontal)
+        }
     }
 }
 
@@ -136,8 +126,5 @@ struct LoginView: View {
     LoginView()
         .environmentObject(session)
         .environment(\.modelContext, ModelContext(container))
-//    SignUpView()
-//        .environmentObject(session)
-//        .environment(\.modelContext, ModelContext(container))
     
 }

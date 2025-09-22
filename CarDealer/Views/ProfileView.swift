@@ -43,35 +43,30 @@ struct ProfileView: View {
      var users: [User]
     
     var body: some View {
-//        TabView {
-            NavigationStack {
-                ThemedBackground {
-                    if let user = session.currentUser {
-                        VStack(spacing: 20) {
-                            ProfileSection(user: user)
-                            HStack {
+        NavigationStack {
+            ThemedBackground {
+                if let user = session.currentUser {
+                    VStack(spacing: 20) {
+                        ProfileSection(user: user)
+                        HStack {
 //                                NavigationLink("Edit Profile") {
 //                                    EditProfileView()
 //                                }
-                                Spacer()
-                                Button("Logout") {
-                                    session.logout()
-                                }.buttonStyle(PillButtonStyle())
-                            }
-                            .padding(.horizontal)
+                            Spacer()
+                            Button("Logout") {
+                                session.logout()
+                            }.buttonStyle(PillButtonStyle())
                         }
-                        .padding()
-                        .navigationTitle("Profile")
-                    } else {
-                        Text("No user signed in")
-                            .navigationTitle("Profile")
+                        .padding(.horizontal)
                     }
+                    .padding()
+                    .navigationTitle("Profile")
+                } else {
+                    Text("No user signed in")
+                        .navigationTitle("Profile")
                 }
             }
-//            .tabItem {
-//                Label("Profile", systemImage: "person.crop.circle")
-//            }
-//        }
+        }
     }
 }
 
@@ -82,7 +77,6 @@ struct ProfileSection: View {
     
     var body: some View {
             VStack {
-                // Redesigned
                 Image(session.currentUser!.avatarURL)
                     .resizable()
                     .scaledToFit()

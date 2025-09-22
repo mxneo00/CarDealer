@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct SectionHeaderStyle: ViewModifier {
+    @Environment(\.theme) var theme
+    
     func body(content: Content) -> some View {
         content
             .font(.headline)
-            .foregroundColor(.blue)
+            .foregroundColor(theme.palette.accent)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading, 8)
     }
@@ -28,6 +30,7 @@ struct FormFieldStyle: ViewModifier {
             .background(theme.palette.textField)
             .cornerRadius(10)
             .foregroundColor(theme.palette.onPrimary)
+            .tint(.white)
             .textInputAutocapitalization(.never)
             .disableAutocorrection(true)
     }
@@ -52,7 +55,7 @@ struct FormStyle: ViewModifier {
             .padding()
             .textFieldStyle(.plain)
             .font(.body)
-            .tint(.purple)
+            .tint(.white)
     }
 }
 

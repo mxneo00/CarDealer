@@ -41,13 +41,13 @@
 		3F02CAA92E7871EF00011C56 /* session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = session.swift; sourceTree = "<group>"; };
 		3FAFF1D02E81B8A300FED6A8 /* mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mock.swift; sourceTree = "<group>"; };
 		3FEFE5852E7C57D600B68FF2 /* theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theme.swift; sourceTree = "<group>"; };
-		3FF1EED52E731A8400A7F0BA /* CarDealer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarDealer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FF1EED52E731A8400A7F0BA /* LumeCars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LumeCars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF1EED82E731A8400A7F0BA /* CarDealerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDealerApp.swift; sourceTree = "<group>"; };
 		3FF1EEDC2E731A8500A7F0BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3FF1EEDF2E731A8500A7F0BA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		3FF1EEE52E731A8500A7F0BA /* CarDealerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarDealerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FF1EEE52E731A8500A7F0BA /* LumeCarsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LumeCarsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF1EEE92E731A8500A7F0BA /* CarDealerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDealerTests.swift; sourceTree = "<group>"; };
-		3FF1EEEF2E731A8500A7F0BA /* CarDealerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarDealerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FF1EEEF2E731A8500A7F0BA /* LumeCarsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LumeCarsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF1EEF32E731A8500A7F0BA /* CarDealerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDealerUITests.swift; sourceTree = "<group>"; };
 		3FF1EEF52E731A8500A7F0BA /* CarDealerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDealerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,9 +100,9 @@
 		3FF1EED62E731A8400A7F0BA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3FF1EED52E731A8400A7F0BA /* CarDealer.app */,
-				3FF1EEE52E731A8500A7F0BA /* CarDealerTests.xctest */,
-				3FF1EEEF2E731A8500A7F0BA /* CarDealerUITests.xctest */,
+				3FF1EED52E731A8400A7F0BA /* LumeCars.app */,
+				3FF1EEE52E731A8500A7F0BA /* LumeCarsTests.xctest */,
+				3FF1EEEF2E731A8500A7F0BA /* LumeCarsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -156,9 +156,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3FF1EED42E731A8400A7F0BA /* CarDealer */ = {
+		3FF1EED42E731A8400A7F0BA /* LumeCars */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3FF1EEF92E731A8500A7F0BA /* Build configuration list for PBXNativeTarget "CarDealer" */;
+			buildConfigurationList = 3FF1EEF92E731A8500A7F0BA /* Build configuration list for PBXNativeTarget "LumeCars" */;
 			buildPhases = (
 				3FF1EED12E731A8400A7F0BA /* Sources */,
 				3FF1EED22E731A8400A7F0BA /* Frameworks */,
@@ -177,14 +177,14 @@
 				3F5EB6FB2E79DA940033E4EE /* Models */,
 				3FEFE59F2E7C5A6500B68FF2 /* ViewModels */,
 			);
-			name = CarDealer;
+			name = LumeCars;
 			productName = CarDealer;
-			productReference = 3FF1EED52E731A8400A7F0BA /* CarDealer.app */;
+			productReference = 3FF1EED52E731A8400A7F0BA /* LumeCars.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3FF1EEE42E731A8500A7F0BA /* CarDealerTests */ = {
+		3FF1EEE42E731A8500A7F0BA /* LumeCarsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3FF1EEFC2E731A8500A7F0BA /* Build configuration list for PBXNativeTarget "CarDealerTests" */;
+			buildConfigurationList = 3FF1EEFC2E731A8500A7F0BA /* Build configuration list for PBXNativeTarget "LumeCarsTests" */;
 			buildPhases = (
 				3FF1EEE12E731A8500A7F0BA /* Sources */,
 				3FF1EEE22E731A8500A7F0BA /* Frameworks */,
@@ -195,14 +195,14 @@
 			dependencies = (
 				3FF1EEE72E731A8500A7F0BA /* PBXTargetDependency */,
 			);
-			name = CarDealerTests;
+			name = LumeCarsTests;
 			productName = CarDealerTests;
-			productReference = 3FF1EEE52E731A8500A7F0BA /* CarDealerTests.xctest */;
+			productReference = 3FF1EEE52E731A8500A7F0BA /* LumeCarsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		3FF1EEEE2E731A8500A7F0BA /* CarDealerUITests */ = {
+		3FF1EEEE2E731A8500A7F0BA /* LumeCarsUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3FF1EEFF2E731A8500A7F0BA /* Build configuration list for PBXNativeTarget "CarDealerUITests" */;
+			buildConfigurationList = 3FF1EEFF2E731A8500A7F0BA /* Build configuration list for PBXNativeTarget "LumeCarsUITests" */;
 			buildPhases = (
 				3FF1EEEB2E731A8500A7F0BA /* Sources */,
 				3FF1EEEC2E731A8500A7F0BA /* Frameworks */,
@@ -213,9 +213,9 @@
 			dependencies = (
 				3FF1EEF12E731A8500A7F0BA /* PBXTargetDependency */,
 			);
-			name = CarDealerUITests;
+			name = LumeCarsUITests;
 			productName = CarDealerUITests;
-			productReference = 3FF1EEEF2E731A8500A7F0BA /* CarDealerUITests.xctest */;
+			productReference = 3FF1EEEF2E731A8500A7F0BA /* LumeCarsUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -241,7 +241,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3FF1EED02E731A8400A7F0BA /* Build configuration list for PBXProject "CarDealer" */;
+			buildConfigurationList = 3FF1EED02E731A8400A7F0BA /* Build configuration list for PBXProject "LumeCars" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -254,9 +254,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3FF1EED42E731A8400A7F0BA /* CarDealer */,
-				3FF1EEE42E731A8500A7F0BA /* CarDealerTests */,
-				3FF1EEEE2E731A8500A7F0BA /* CarDealerUITests */,
+				3FF1EED42E731A8400A7F0BA /* LumeCars */,
+				3FF1EEE42E731A8500A7F0BA /* LumeCarsTests */,
+				3FF1EEEE2E731A8500A7F0BA /* LumeCarsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -322,12 +322,12 @@
 /* Begin PBXTargetDependency section */
 		3FF1EEE72E731A8500A7F0BA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3FF1EED42E731A8400A7F0BA /* CarDealer */;
+			target = 3FF1EED42E731A8400A7F0BA /* LumeCars */;
 			targetProxy = 3FF1EEE62E731A8500A7F0BA /* PBXContainerItemProxy */;
 		};
 		3FF1EEF12E731A8500A7F0BA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3FF1EED42E731A8400A7F0BA /* CarDealer */;
+			target = 3FF1EED42E731A8400A7F0BA /* LumeCars */;
 			targetProxy = 3FF1EEF02E731A8500A7F0BA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -523,7 +523,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CarDealer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CarDealer";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LumeCars.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LumeCars";
 			};
 			name = Debug;
 		};
@@ -542,7 +542,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CarDealer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CarDealer";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LumeCars.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LumeCars";
 			};
 			name = Release;
 		};
@@ -583,7 +583,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3FF1EED02E731A8400A7F0BA /* Build configuration list for PBXProject "CarDealer" */ = {
+		3FF1EED02E731A8400A7F0BA /* Build configuration list for PBXProject "LumeCars" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3FF1EEF72E731A8500A7F0BA /* Debug */,
@@ -592,7 +592,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3FF1EEF92E731A8500A7F0BA /* Build configuration list for PBXNativeTarget "CarDealer" */ = {
+		3FF1EEF92E731A8500A7F0BA /* Build configuration list for PBXNativeTarget "LumeCars" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3FF1EEFA2E731A8500A7F0BA /* Debug */,
@@ -601,7 +601,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3FF1EEFC2E731A8500A7F0BA /* Build configuration list for PBXNativeTarget "CarDealerTests" */ = {
+		3FF1EEFC2E731A8500A7F0BA /* Build configuration list for PBXNativeTarget "LumeCarsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3FF1EEFD2E731A8500A7F0BA /* Debug */,
@@ -610,7 +610,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3FF1EEFF2E731A8500A7F0BA /* Build configuration list for PBXNativeTarget "CarDealerUITests" */ = {
+		3FF1EEFF2E731A8500A7F0BA /* Build configuration list for PBXNativeTarget "LumeCarsUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3FF1EF002E731A8500A7F0BA /* Debug */,
