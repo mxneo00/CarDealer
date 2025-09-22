@@ -11,6 +11,7 @@ import SwiftUI
 import SwiftData
 
 struct CarCard: View {
+    //let CVM: CarViewModel
     @ObservedObject var CVM: CarViewModel
     
     var body: some View {
@@ -53,22 +54,22 @@ struct CarCard: View {
 
                 // Car info
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(CVM.car.brand)
+                    Text(CVM.brand)
                         .font(.headline)
-                    Text(CVM.car.model)
+                    Text(CVM.model)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     
                     HStack(spacing: 16) {
-                        Label("\(CVM.car.year)", systemImage: "gauge")
-                        Label("\(CVM.car.fuelType)", systemImage: "fuelPump")
+                        Label("\(CVM.year)", systemImage: "gauge")
+                        Label("\(CVM.fuelType)", systemImage: "fuelPump")
                         //Label("\(CVM.car.year)", systemImage: "paintpalette")
                         //Label("\(CVM.car.year)", systemImage: "gearshape")
                     }
                     .font(.caption)
                     .foregroundColor(.secondary)
                 }.padding(9)
-                NavigationLink(destination: CarDetailView(CVM: CVM)) {
+                NavigationLink(destination: CarDetailView(listing: Listing)) {
                     Text("View Details")
                         .font(.callout.bold())
                         .frame(maxWidth: .infinity)

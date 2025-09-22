@@ -57,7 +57,7 @@ struct ProfileView: View {
             if let user = session.currentUser {
                 NavigationStack {
                     ThemedBackground {
-                        StyledSection(title: Listings){
+                        StyledSection(title: "Listings"){
                             if user.listings.isEmpty {
                                 Text("No Listings")
                             } else {

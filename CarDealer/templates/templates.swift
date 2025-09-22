@@ -26,7 +26,7 @@ struct ThemedBackground<Content: View>: View {
                 startRadius: 60,
                 endRadius: 450
             )
-            .ignoreSafeArea()
+            //.ignoreSafeArea()
 
             content
         }

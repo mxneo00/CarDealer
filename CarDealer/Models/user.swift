@@ -22,6 +22,7 @@ import SwiftData
     
     @Relationship(deleteRule: .cascade) var listings: [Listing] = []
     @Relationship(deleteRule: .cascade) var likes: [Like] = []
+    //@Relationship(deleteRule: .nullify) var orders: [Order]
     
     func name() -> String {
         return "\(fname) \(lname)"

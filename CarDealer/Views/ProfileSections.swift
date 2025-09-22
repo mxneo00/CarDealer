@@ -11,6 +11,7 @@ import SwiftData
 
 // User Profile Section
 struct ProfileSection: View {
+    @EnvironmentObject var session: Session
     let user: User
     
     var body: some View {
@@ -38,7 +39,7 @@ struct ProfileSection: View {
                 ZStack {
                     Rectangle()
                         .fill(.white)
-                        .ignoreSafeArea(edges: .all)
+                        //.ignoreSafeArea(edges: .all)
                     VStack(alignment: .leading) {
                         StyledSection(title: "Name") {
                             if let user = session.currentUser {

@@ -14,6 +14,7 @@ struct Theme: Equatable {
         let onPrimary: Color
         let cardBackground: Color
         let danger: Color
+        let textField: Color
     }
     struct Spacing: Equatable { let xs: CGFloat; let sm: CGFloat; let md: CGFloat; let lg: CGFloat}
     struct Radii: Equatable {let sm: CGFloat; let md: CGFloat; let lg: CGFloat}
@@ -30,7 +31,8 @@ struct Theme: Equatable {
             secondary: Color("brandSecondary"),
             onPrimary: .white,
             cardBackground: Color(.secondarySystemBackground),
-            danger: .red
+            danger: .red,
+            textField: Color("brand")
         ),
         spacing: .init(xs: 4, sm: 8, md: 16, lg: 24),
         radii: .init(sm: 4, md: 8, lg: 16),

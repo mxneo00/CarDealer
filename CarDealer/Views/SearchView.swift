@@ -9,13 +9,13 @@ import SwiftUI
 
 struct SearchView: View {
     @State private var query: String = ""
-    @ObservedObject var collection: CarCollection()
+    @ObservedObject var collection = CarCollection()
 
     var filteredCars: [CarViewModel] {
         if query.isEmpty {
-            return CarCollection.cars
+            return collection.cars
         } else {
-            return CarCollection.cars.filter { car in 
+            return collection.cars.filter { car in
                 car.brand.localizedCaseInsensitiveContains(query) ||
                 car.model.localizedCaseInsensitiveContains(query) ||
                 String(car.year).contains(query) ||

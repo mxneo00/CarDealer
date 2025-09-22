@@ -32,6 +32,14 @@ class CarViewModel: ObservableObject, Identifiable {
         self.engine = dto.specs.engine
         self.url = dto.url
     }
+//    @Environment(\.modelContext) var ctx: ModelContext
+//    @Published var car: Car
+//    
+//    init(car: Car) {
+//        self.car = car
+//    }
+    
+
 }
 
 class CarCollection: ObservableObject, Identifiable {
