@@ -13,7 +13,7 @@ enum OrderStatus: String, Codable {
 }
 
 @Model class Order {
-    @Attribute(.unique) var id: UUID
+    @Attribute(.unique) var id: UUID = UUID()
     var createdAt: Date
     var status: OrderStatus
 
@@ -22,7 +22,6 @@ enum OrderStatus: String, Codable {
     @Relationship(inverse: \Car.orders) var car: Car?
 
     init(buyer: User? = nil,seller: User? = nil, car: Car? = nil, status: OrderStatus = .pending) {
-        self.id = UUID()
         self.createdAt = Date()
         self.status = status
         self.buyer = buyer

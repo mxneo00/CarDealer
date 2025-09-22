@@ -31,7 +31,7 @@ struct CarDealerApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
-                .environment(\.modelContext, ModelContext(container))
+                //.environment(\.modelContext, ModelContext(container))
                 .environmentObject(Session(container: container))
         }
         .modelContainer(container)
