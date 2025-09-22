@@ -9,13 +9,11 @@ import SwiftUI
 import SwiftData
 
 class SellTabViewModel: ObservableObject {
-    
     @Published var brand: String = ""
     @Published var model: String = ""
     @Published var yearInput: String = ""
     @Published var priceInput: String = ""
     @Published var imageURL: String = ""
-    
     var year: Int? { Int(yearInput) }
     var price: Float? { Float(priceInput)}
     
@@ -50,10 +48,3 @@ class SellTabViewModel: ObservableObject {
     }
     
 }
-
-//class CarListingViewModel: ObservableObject, Identifiable {
-//    @Published var dto: ListingDTO? = nil
-//    
-//    
-//    
-//}

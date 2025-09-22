@@ -43,3 +43,22 @@ struct CarDetailView: View {
         }
     }
 }
+
+struct ListingDetailView: View {
+    @EnvironmentObject var session: Session
+    
+    let listing: Listing?
+    
+    init(listing: Listing?) {
+        self.listing = listing
+    }
+    
+    var body: some View {
+        if let listing = listing {
+            Text("Listing: \(listing.car.year) \(listing.car.brand) \(listing.car.model)")
+        } else {
+            Text("No Listings Yet")
+        }
+    }
+    
+}

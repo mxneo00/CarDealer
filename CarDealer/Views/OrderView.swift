@@ -41,25 +41,20 @@ struct OrderView: View {
 }
 
 struct OrdersView: View {
-    var orders: [SellTabViewModel] = []
-    @ObservedObject var carVM: CarViewModel
-    @State var listings: [Listing]
+    @EnvironmentObject var session: Session
+    @Environment(\.modelContext) var ctx
     
     var body: some View {
         NavigationStack {
             ThemedBackground {
                 VStack {
-                    if listings.isEmpty {
-                        Text("No Listings")
-                            .foregroundColor(.secondary)
-                    } else {
-                        ForEach(listings) { listing in
-                            NavigationLink(destination: CarDetailView(carVM: carVM)) {
-                                LazyVStack(alignment: .leading) {
-                                    Text("\(listing.car.brand) \(listing.car.model)")
-                                    Text("\(listing.price, specifier: "%.2f")")
-                                        .foregroundColor(.secondary)
-                                }
+                    if let user = session.currentUser {
+                        NavigationStack {
+                            if user.listings.isEmpty {
+                                Text("No Listings")
+                            } else {
+                                ListingView(listings: user.listings)
+                                    .navigationTitle("Listings")
                             }
                         }
                     }
@@ -67,6 +62,27 @@ struct OrdersView: View {
                         Text("Sell Car")
                     }.buttonStyle(PillButtonStyle())
                     Spacer()
+                }.padding()
+            }
+        }
+    }
+}
+
+struct ListingView: View {
+    let listings: [Listing]
+    
+    var body: some View {
+        if listings.isEmpty {
+            Text("No Listings")
+                .foregroundColor(.secondary)
+        } else {
+            ForEach(listings) { listing in
+                NavigationLink(destination: ListingDetailView(listing: listing)) {
+                    LazyVStack(alignment: .leading) {
+                        Text("\(listing.car.carName())")
+                        Text("$\(listing.price, specifier: "%.2f")")
+                            .foregroundColor(.secondary)
+                    }
                 }
             }
         }
