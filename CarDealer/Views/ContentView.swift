@@ -24,8 +24,11 @@ struct ContentView: View {
                     Text("Welcome back, \(user.username)!")
                         .font(.title2)
                         .padding()
-                    NavigationLink("Profile", destination: ProfileView())
-                    NavigationLink("Car Catalogue", destination: CarCatalogueView(carVM: carVM))
+                    TabView {
+                        NavigationStack { ProfileView()}.tabItem { Label("Profile", systemImage: "person")}
+                        NavigationStack { CarCatalogueView()}.tabItem { Label("Catalogue", systemImage: "list.bullet")}
+                        NavigationStack { SearchView()}.tabItem { Label("Search", systemImage: "list.bullet")}
+                    }.scrollContentBackground(.hidden)
                     
                     Button("Log out"){
                         session.logout()
@@ -43,10 +46,10 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    let container = try! ModelContainer(for: User.self, Car.self)
-    let session = Session(container: container)
-    ContentView()
-        .environmentObject(session)
-        .environment(\.modelContext, ModelContext(container))
-}
+//#Preview {
+//    let container = try! ModelContainer(for: User.self, Car.self)
+//    let session = Session(container: container)
+//    ContentView()
+//        .environmentObject(session)
+//        .environment(\.modelContext, ModelContext(container))
+//}

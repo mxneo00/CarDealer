@@ -51,6 +51,7 @@ struct ProfileSection: View {
 // User Listings Section
 // ??? 
 struct ListingSection: View {
+    let carVM: CarViewModel
     let listings: [Listing]
     
     var body: some View {
@@ -73,6 +74,7 @@ struct ListingSection: View {
 // User Likes Section
 // ???
 struct LikesSection: View {
+    let carVM: CarViewModel
     let likes: [Like]
     
     var body: some View {
@@ -81,7 +83,7 @@ struct LikesSection: View {
                     .foregroundColor(.secondary)
             } else {
                 ForEach(likes) { like in
-                    NavigationLink(destination: CarDetailView(car: like.car)) {
+                    NavigationLink(destination: CarDetailView(carVM: carVM)) {
                         Text("\(like.car.brand) \(like.car.model) \(like.car.year)")
                     }
                 }

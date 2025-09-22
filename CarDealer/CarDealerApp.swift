@@ -20,7 +20,13 @@ struct RootView: View {
 
 @main
 struct CarDealerApp: App {
-    let container = try! ModelContainer(for: User.self, Car.self, Listing.self, Like.self)
+    //let container = try! ModelContainer(for: User.self, Car.self, Listing.self, Like.self)
+    var container: ModelContainer
+    init() {
+        let schema = Schema([User.self, Car.self, Listing.self, Like.self])
+        let configuration = ModelConfiguration(schema: schema)
+        self.container = try! ModelContainer(for: schema, configurations: [configuration])
+    }
     
     var body: some Scene {
         WindowGroup {

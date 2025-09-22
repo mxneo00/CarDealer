@@ -85,9 +85,9 @@ struct CarCard: View {
 }
 
 struct CarCatalogueView: View {
-    @StateObject private var collection: CarCollection = CarCollection()
+    @StateObject private var collection: CarCollection
     
-    init(collection: CarCollection) {
+    init(collection: CarCollection = CarCollection()) {
         _collection = StateObject(wrappedValue: collection)
     }
     

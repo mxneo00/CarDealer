@@ -30,7 +30,6 @@ struct ProfileView: View {
                     if let user = session.currentUser {
                         VStack(spacing: 20) {
                             ProfileSection(user: user)
-                            
                             HStack {
                                 NavigationLink("Edit Profile") {
                                     EditProfileView()
@@ -53,48 +52,15 @@ struct ProfileView: View {
             .tabItem {
                 Label("Profile", systemImage: "person.crop.circle")
             }
-            
-            if let user = session.currentUser {
-                NavigationStack {
-                    ThemedBackground {
-                        StyledSection(title: "Listings"){
-                            if user.listings.isEmpty {
-                                Text("No Listings")
-                            } else {
-                                ListingSection(listings: user.listings)
-                                    .navigationTitle("Listings")
-                            }
-                            NavigationLink(destination: SellTabView()) {
-                                Label("Create new Listing", systemImage: "plus.circle.fill")
-                            }
-                        }
-                    }
-                }
-                .tabItem {
-                    Label("Listings", systemImage: "car.fill")
-                }
-                
-                NavigationStack {
-                    ThemedBackground {
-                        StyledSection(title: "Likes") {
-                            LikesSection(likes: user.likes)
-                                .navigationTitle("Likes")
-                        }
-                    }
-                }
-                .tabItem {
-                    Label("Likes", systemImage: "heart.fill")
-                }
-            }
         }
     }
 }
 
 
-#Preview {
-    let container = try! ModelContainer(for: User.self, Car.self, Listing.self, Like.self)
-    let context = ModelContext(container)
-    
-    ProfileView()
-        .environmentObject(Session.preview)
-}
+//#Preview {
+//    let container = try! ModelContainer(for: User.self, Car.self, Listing.self, Like.self)
+//    let context = ModelContext(container)
+//    
+//    ProfileView()
+//        .environmentObject(Session.preview)
+//}

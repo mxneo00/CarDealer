@@ -6,38 +6,66 @@
 //
 
 import SwiftUI
+import SwiftData
+
+struct SearchBar: View {
+    @Binding var text: String
+    var placeholder: String = "Search..."
+    var body: some View {
+        HStack {
+            Image(systemName: "magnifyingglass")
+                .foregroundColor(.gray)
+            TextField(placeholder, text: $text)
+                .autocorrectionDisabled(true)
+                .textInputAutocapitalization(.never)
+            if !text.isEmpty {
+                Button(action: {text = ""}) {
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundColor(.gray)
+                }
+            }
+        }
+        .padding(10)
+        .background(.thinMaterial)
+        .cornerRadius(12)
+        .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
+        .padding(.horizontal)
+    }
+}
 
 struct SearchView: View {
     @State private var query: String = ""
-    @ObservedObject var collection = CarCollection()
-
-    var filteredCars: [CarViewModel] {
-        if query.isEmpty {
-            return collection.cars
-        } else {
-            return collection.cars.filter { car in
-                car.brand.localizedCaseInsensitiveContains(query) ||
-                car.model.localizedCaseInsensitiveContains(query) ||
-                String(car.year).contains(query) ||
-                car.fuelType.localizedCaseInsensitiveContains(query) ||
-                car.engine.localizedCaseInsensitiveContains(query)
-            }
-        }
-    }
-
+    @Query var users: [User]
+    
     var body: some View {
-        NavigationStack {
-            List(filteredCars) { car in
-                VStack(alignment: .leading) {
-                    Text("\(car.year) \(car.brand) \(car.model)")
-                        .font(.headline)
-                    Text("$\(car.price, specifier: "%.2f")")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
+        ThemedBackground {
+            VStack {
+                SearchBar(text: $query, placeholder: "Search cars...")
+                
+                ScrollView {
+                    LazyVStack {
+                        ForEach(sampleCars.filter {
+                            query.isEmpty ? true :
+                            $0.localizedCaseInsensitiveContains(query)
+                        }, id: \.self) { car in
+                            Text(car)
+                        }
+                    }.listStyle(PlainListStyle())
+                    
+                    LazyVStack {
+                        ForEach(users, id: \.self) { user in
+                            Text("\(user.fname) \(user.lname)")
+                        }
+                    }
                 }
-            }
-            .navigationTitle("Search Cars")
-            .searchable(text: $query, prompt: "Search make, model, year...")
+            }.navigationTitle("Search")
         }
     }
+    let sampleCars =  [
+        "Tesla Model S",
+        "Toyota Supra",
+        "BMW M3",
+        "Ford Mustang",
+        "Audi A4"
+    ]
 }
