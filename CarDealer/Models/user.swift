@@ -20,9 +20,10 @@ import SwiftData
     var createdAt: Double = Date().timeIntervalSince1970
     var updatedAt: Double = Date().timeIntervalSince1970
     
-    @Relationship(deleteRule: .cascade) var listings: [Listing] = []
+    @Relationship var buyOrders: [Order] = []
+    @Relationship var sellOrders: [Order] = []
+    @Relationship(inverse: \Car.owner) var cars: [Car] = []
     @Relationship(deleteRule: .cascade) var likes: [Like] = []
-    //@Relationship(deleteRule: .nullify) var orders: [Order]
     
     func name() -> String {
         return "\(fname) \(lname)"
@@ -35,6 +36,7 @@ import SwiftData
         self.lname = lname
         self.avatarURL = avatarURL
         self.passwordDigest = passwordDigest
+        
     }
     
 }

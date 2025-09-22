@@ -21,6 +21,8 @@ import SwiftData
     var miles: Int
     var owner: User?
     
+    @Relationship(deleteRule: .nullify) var orders: [Order]
+    
     func carName() -> String {
         return "\(year) \(brand) \(model)"
     }
@@ -39,6 +41,7 @@ import SwiftData
         self.carURL = carURL
         self.miles = miles
         self.owner = owner
+        self.orders = []
     }
     
 }

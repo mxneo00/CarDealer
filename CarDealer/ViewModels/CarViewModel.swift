@@ -25,8 +25,6 @@ class CarViewModel: ObservableObject, Identifiable {
         let carVM = CarViewModel(car: car)
         return carVM
     }
-    
-
 }
 
 class CarCollection: ObservableObject, Identifiable {

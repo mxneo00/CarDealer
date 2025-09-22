@@ -17,8 +17,9 @@ enum OrderStatus: String, Codable {
     var createdAt: Date
     var status: OrderStatus
 
-    //@Relationship(inverse: \User.orders) var user: User?
-    //@Relationship(inverse: \car.orders) var car: Car?
+    @Relationship(inverse: \User.buyOrders) var buyer: User?
+    @Relationship(inverse: \User.sellOrders) var seller: User?
+    @Relationship(inverse: \Car.orders) var car: Car?
 
     init(user: User?, car: Car?, status: OrderStatus = .pending) {
         self.id = UUID()
