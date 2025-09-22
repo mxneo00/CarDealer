@@ -51,6 +51,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		3F5BF46C2E817C640039B069 /* templates */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = templates; sourceTree = "<group>"; };
 		3F5EB6F72E79CBE10033E4EE /* Photos */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Photos; sourceTree = "<group>"; };
 		3F5EB6F82E79CBF50033E4EE /* JSON */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = JSON; sourceTree = "<group>"; };
 		3F5EB6F92E79CC030033E4EE /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
@@ -107,6 +108,7 @@
 		3FF1EED72E731A8400A7F0BA /* CarDealer */ = {
 			isa = PBXGroup;
 			children = (
+				3F5BF46C2E817C640039B069 /* templates */,
 				3FEFE59F2E7C5A6500B68FF2 /* ViewModels */,
 				3F5EB6FB2E79DA940033E4EE /* Models */,
 				3F5EB6FA2E79CC300033E4EE /* Styles */,
@@ -164,6 +166,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				3F5BF46C2E817C640039B069 /* templates */,
 				3F5EB6F72E79CBE10033E4EE /* Photos */,
 				3F5EB6F82E79CBF50033E4EE /* JSON */,
 				3F5EB6F92E79CC030033E4EE /* Views */,
