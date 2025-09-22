@@ -51,12 +51,6 @@ struct SearchView: View {
                             Text(car)
                         }
                     }.listStyle(PlainListStyle())
-                    
-                    LazyVStack {
-                        ForEach(users, id: \.self) { user in
-                            Text("\(user.fname) \(user.lname)")
-                        }
-                    }
                 }
             }.navigationTitle("Search")
         }

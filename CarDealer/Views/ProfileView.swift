@@ -20,6 +20,9 @@ struct EditProfileView: View {
                 StyledSection(title: "Email") {
                     TextField("email", text: $userVM.user.email).formFieldStyle()
                 }
+                StyledSection(title: "First Name") {
+                    TextField("first name", text: $userVM.user.fname).formFieldStyle()
+                }
                 Button(action: updateEmail) {
                     Text("Update")
                 }.buttonStyle(PillButtonStyle())
@@ -40,7 +43,7 @@ struct ProfileView: View {
      var users: [User]
     
     var body: some View {
-        TabView {
+//        TabView {
             NavigationStack {
                 ThemedBackground {
                     if let user = session.currentUser {
@@ -65,10 +68,10 @@ struct ProfileView: View {
                     }
                 }
             }
-            .tabItem {
-                Label("Profile", systemImage: "person.crop.circle")
-            }
-        }
+//            .tabItem {
+//                Label("Profile", systemImage: "person.crop.circle")
+//            }
+//        }
     }
 }
 

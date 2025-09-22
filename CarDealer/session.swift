@@ -30,7 +30,7 @@ class Session: ObservableObject {
     
     func signup(email: String, lname: String, fname: String, password: String, username: String) throws {
         let digest = hash(password: password)
-        let newUser = User(username: username, email: email, fname: fname, lname: lname, avatarURL: "globe", passwordDigest: digest)
+        let newUser = User(username: username, email: email, fname: fname, lname: lname, passwordDigest: digest)
         //TODO Fix
 //        guard !username.isEmpty, !email.isEmpty, !password.isEmpty else {
 //            error = "Username, email, and password are required"
@@ -67,49 +67,6 @@ class Session: ObservableObject {
     
     func logout() {
         self.currentUser = nil
-    }
-}
-
-extension ModelContainer {
-    static var preview: ModelContainer {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        return try! ModelContainer(for: User.self, Car.self, Listing.self, Like.self, configurations: config)
-    }
-}
-
-class MockSession: Session {
-    override init(container: ModelContainer) {
-        super.init(container: container)
-        self.currentUser = previewUser
-    }
-    
-    var user2: User {
-        return User(username: "DoeJane", email: "dhjane@yahoo.com", fname: "Jane", lname: "Doe", avatarURL: "globe", passwordDigest: "Password")
-    }
-    
-    var previewUser: User {
-        let car1 = Car(brand: "Toyota", model: "Corolla", year: 2022, price: 22000, carURL: "globe", miles: 50000)
-        let car2 = Car(brand: "Ford", model: "Mustang", year: 2023, price: 45000, carURL: "globe",miles: 50000)
-        
-        _ = Listing(price: 21000, car: car1, seller: user2)
-        _ = Listing(price: 40000, car: car2, seller: user2)
-        _ = Like(user: user2, car: car1)
-        
-        return User(username: "DoeJohn", email: "djohn@yahoo.com", fname: "John", lname: "Doe", avatarURL: "globe", passwordDigest: "Password")
-    }
-    
-    override func login(emailOrUsername: String, password: String) throws {
-        self.currentUser = previewUser
-    }
-    
-    override func signup(email: String, lname: String, fname: String, password: String, username: String) throws {
-        // no-op
-    }
-}
-
-extension Session {
-    static var preview: Session {
-        MockSession(container: ModelContainer.preview)
     }
 }
 

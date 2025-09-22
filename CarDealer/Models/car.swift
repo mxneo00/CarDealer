@@ -33,7 +33,7 @@ import SwiftData
          price: Float,
          carURL: String = "default_car",
          miles: Int = 0,
-         owner: User? = nil) {
+         owner: User) {
         self.brand = brand
         self.model = model
         self.year = year

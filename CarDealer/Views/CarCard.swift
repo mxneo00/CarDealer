@@ -54,7 +54,7 @@ struct CarCard: View {
                         .foregroundColor(.secondary)
                     
                     HStack(spacing: 16) {
-                        Label("\(carVM.car.year)", systemImage: "gauge")
+                        Label("\(carVM.car.year, format: .number.grouping(.never))", systemImage: "gauge")
                         Label("\(carVM.car.fuelType)", systemImage: "fuelPump")
                         //Label("\(CVM.car.year)", systemImage: "paintpalette")
                         //Label("\(CVM.car.year)", systemImage: "gearshape")

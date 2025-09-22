@@ -31,7 +31,10 @@ struct CarDetailView: View {
                         Text(carVM.car.owner!.name())
                     }
                 }.padding()
-                Text("\(carVM.car.price)")
+                VStack {
+                    Text("\(carVM.car.year, format: .number.grouping(.never)) \(carVM.car.brand) \(carVM.car.model)")
+                    Text("\(carVM.car.price, specifier: "%.2f")")
+                }
 //                NavigationLink(desination: OrderView(carVM: carVM)) {
 //                    Text("Purchase Car")
 //                }.buttonStyle(PillButtonStyle())

@@ -19,7 +19,7 @@ class CarViewModel: ObservableObject, Identifiable {
     static func fromJSON(dto: CarDTO) -> CarViewModel {
         let dto_url = dto.url ?? "generic_car"
         let car = Car(
-            brand: dto.brand, model: dto.model, year: dto.year, price: dto.price, miles: 50000, owner: nil
+            brand: dto.brand, model: dto.model, year: dto.year, price: dto.price, miles: 50000, owner: User.preview
         )
         car.carURL = dto_url
         let carVM = CarViewModel(car: car)

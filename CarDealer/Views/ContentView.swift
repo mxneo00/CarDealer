@@ -13,34 +13,35 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 40){
-                Text("CarDealer")
-                    .font(.largeTitle)
-                    .bold()
-                    .padding(.top, 50)
-                Spacer()
-                
-                if let user = session.currentUser {
-                    Text("Welcome back, \(user.username)!")
-                        .font(.title2)
-                        .padding()
-                    TabView {
-                        NavigationStack { ProfileView()}.tabItem { Label("Profile", systemImage: "person")}
-                        NavigationStack { CarCatalogueView()}.tabItem { Label("Catalogue", systemImage: "list.bullet")}
-                        NavigationStack { SearchView()}.tabItem { Label("Search", systemImage: "list.bullet")}
-                    }.scrollContentBackground(.hidden)
+            ThemedBackground {
+                VStack(spacing: 40){
+                    Text("CarDealer")
+                        .font(.largeTitle)
+                        .bold()
+                        .padding(.top, 50)
+                    Spacer()
                     
-                    Button("Log out"){
-                        session.logout()
-                    }.buttonStyle(PillButtonStyle())
-                } else {
-                    NavigationLink("Log In", destination: LoginView())
-                    NavigationLink("Sign Up", destination: SignUpView())
-                    NavigationLink("Car Catalogue", destination: CarCatalogueView())
+                    if let user = session.currentUser {
+                        Text("Welcome back, \(user.username)!")
+                            .font(.title2)
+                            .padding()
+                        NavigationLink("Profile", destination: ProfileView())
+                        NavigationLink("Catalogue", destination: CarCatalogueView())
+                        NavigationLink("Search", destination: SearchView())
+                        //NavigationLink("Orders", destination: OrderView())
+                        
+                        Button("Log out"){
+                            session.logout()
+                        }.buttonStyle(PillButtonStyle())
+                    } else {
+                        NavigationLink("Log In", destination: LoginView())
+                        NavigationLink("Sign Up", destination: SignUpView())
+                        NavigationLink("Car Catalogue", destination: CarCatalogueView())
+                    }
+                    Spacer()
                 }
-                Spacer()
+                .padding()
             }
-            .padding()
         }
         .navigationTitle("Home")
     }
