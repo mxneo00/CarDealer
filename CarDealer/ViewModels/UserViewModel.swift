@@ -32,12 +32,23 @@ class UserVM: ObservableObject {
         }
     }
     
-    func updateName() {
-        
-    }
+//    func updateName() {
+//        if let user = session.currentUser {
+//            user.fname = fname
+//            user.lname = lname
+//        } else {
+//            print("Failed to find user")
+//        }
+//        
+//        do {
+//            try ctx.save()
+//        } catch {
+//            print("Error updating name")
+//        }
+//    }
     
-    func updateImage() {
-        
-    }
+//    func updateImage() {
+//        
+//    }
     
 }

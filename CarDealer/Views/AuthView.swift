@@ -27,36 +27,36 @@ struct SignUpView: View {
                 StyledSection(title: "Username") {
                     TextField("Enter username", text: $username)
                         .formFieldStyle()
-                        .autocapitalization(.none)
-                        .autocorrectionDisabled(true)
+//                        .autocapitalization(.none)
+//                        .autocorrectionDisabled(true)
                 }
                 StyledSection(title: "First Name") {
                     TextField("First name", text: $fname)
                         .formFieldStyle()
-                        .autocorrectionDisabled(true)
+//                        .autocorrectionDisabled(true)
                 }
                 StyledSection(title: "Last Name") {
                     TextField("Last name", text: $lname)
                         .formFieldStyle()
-                        .autocorrectionDisabled(true)
+//                        .autocorrectionDisabled(true)
                 }
                 StyledSection(title: "Email") {
                     TextField("Email", text: $email)
                         .formFieldStyle()
-                        .autocapitalization(.none)
-                        .autocorrectionDisabled(true)
+//                        .autocapitalization(.none)
+//                        .autocorrectionDisabled(true)
                 }
                 StyledSection(title: "Password") {
                     SecureField("Password", text: $password)
                         .formFieldStyle()
-                        .autocapitalization(.none)
-                        .autocorrectionDisabled(true)
+//                        .autocapitalization(.none)
+//                        .autocorrectionDisabled(true)
                 }
                 StyledSection(title: "Confirm Password") {
                     SecureField("Confirm password", text: $passwordConfirmation)
                         .formFieldStyle()
-                        .autocapitalization(.none)
-                        .autocorrectionDisabled(true)
+//                        .autocapitalization(.none)
+//                        .autocorrectionDisabled(true)
                 }
             }
             Button("Sign Up") {

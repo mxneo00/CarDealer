@@ -11,8 +11,24 @@ import SwiftUI
 import SwiftData
 
 struct EditProfileView: View {
+    @EnvironmentObject var session: Session
+    @ObservedObject var userVM: UserVM
+    
     var body: some View {
-        Text("Edit profile")
+        ThemedBackground {
+            VStack {
+                StyledSection(title: "Email") {
+                    TextField("email", text: $userVM.user.email).formFieldStyle()
+                }
+                Button(action: updateEmail) {
+                    Text("Update")
+                }.buttonStyle(PillButtonStyle())
+            }.formStyle()
+        }
+    }
+    
+    func updateEmail() {
+        userVM.updateEmail(email: userVM.user.email)
     }
 }
 
@@ -31,9 +47,9 @@ struct ProfileView: View {
                         VStack(spacing: 20) {
                             ProfileSection(user: user)
                             HStack {
-                                NavigationLink("Edit Profile") {
-                                    EditProfileView()
-                                }
+//                                NavigationLink("Edit Profile") {
+//                                    EditProfileView()
+//                                }
                                 Spacer()
                                 Button("Logout") {
                                     session.logout()

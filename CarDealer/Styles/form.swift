@@ -28,6 +28,8 @@ struct FormFieldStyle: ViewModifier {
             .background(theme.palette.textField)
             .cornerRadius(10)
             .foregroundColor(theme.palette.onPrimary)
+            .textInputAutocapitalization(.never)
+            .disableAutocorrection(true)
     }
 }
 

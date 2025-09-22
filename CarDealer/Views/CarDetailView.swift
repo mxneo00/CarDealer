@@ -32,8 +32,8 @@ struct CarDetailView: View {
                     }
                 }.padding()
                 Text("\(carVM.car.price)")
-//                NavigationLink(desination: OrderView(CVM: CVM)) {
-//                    Text("Place Order")
+//                NavigationLink(desination: OrderView(carVM: carVM)) {
+//                    Text("Purchase Car")
 //                }.buttonStyle(PillButtonStyle())
 //                Spacer()
             }

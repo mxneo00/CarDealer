@@ -30,7 +30,7 @@ struct SellView: View {
             StyledSection(title: "Price") {
                 TextField("Price", text: $sellVM.priceInput)
                     .formFieldStyle()
-                    .keyboardType(.numberPad)
+                    .keyboardType(.decimalPad)
             }
             Button("Create Listing") {
                 sellVM.createListing(ctx: ctx, user: session.currentUser)

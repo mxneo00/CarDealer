@@ -14,7 +14,7 @@ enum OrderStatus: String, Codable {
 
 @Model class Order {
     @Attribute(.unique) var id: UUID = UUID()
-    var createdAt: Date
+    var createdAt: Double = Date().timeIntervalSince1970
     var status: OrderStatus
 
     @Relationship(inverse: \User.buyOrders) var buyer: User?
@@ -22,7 +22,6 @@ enum OrderStatus: String, Codable {
     @Relationship(inverse: \Car.orders) var car: Car?
 
     init(buyer: User? = nil,seller: User? = nil, car: Car? = nil, status: OrderStatus = .pending) {
-        self.createdAt = Date()
         self.status = status
         self.buyer = buyer
         self.seller = seller
