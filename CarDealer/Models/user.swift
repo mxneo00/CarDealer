@@ -10,8 +10,8 @@ import SwiftData
 
 @Model class User {
     @Attribute(.unique) var id: UUID = UUID()
-    @Attribute(.unique) var username: String
-    @Attribute(.unique) var email: String
+    var username: String
+    var email: String
     var fname: String
     var lname: String
     var avatarURL: String = "default_avatar"

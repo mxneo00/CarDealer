@@ -21,6 +21,6 @@ import SwiftData
         self.price = price
         self.car = car
         self.seller = seller
-        self.isSold = isSold
+        self.isSold = false
     }
 }
