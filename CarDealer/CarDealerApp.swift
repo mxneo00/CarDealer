@@ -23,7 +23,7 @@ struct CarDealerApp: App {
     //let container = try! ModelContainer(for: User.self, Car.self, Listing.self, Like.self)
     var container: ModelContainer
     init() {
-        let schema = Schema([User.self, Car.self, Listing.self, Like.self])
+        let schema = Schema([User.self, Car.self, Listing.self, Like.self, Order.self])
         let configuration = ModelConfiguration(schema: schema)
         self.container = try! ModelContainer(for: schema, configurations: [configuration])
     }

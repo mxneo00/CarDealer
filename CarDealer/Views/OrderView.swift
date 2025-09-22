@@ -41,7 +41,7 @@ struct OrderView: View {
 }
 
 struct OrdersView: View {
-    var orders: [OrderVM] = []
+    var orders: [SellTabViewModel] = []
     
     var body: some View {
         NavigationStack {

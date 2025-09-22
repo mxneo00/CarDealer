@@ -24,6 +24,7 @@ import SwiftData
     @Relationship var sellOrders: [Order] = []
     @Relationship(inverse: \Car.owner) var cars: [Car] = []
     @Relationship(deleteRule: .cascade) var likes: [Like] = []
+    @Relationship(inverse: \Listing.seller) var listings: [Listing] = []
     
     func name() -> String {
         return "\(fname) \(lname)"
