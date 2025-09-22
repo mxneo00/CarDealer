@@ -42,11 +42,27 @@ struct OrderView: View {
 
 struct OrdersView: View {
     var orders: [SellTabViewModel] = []
+    @ObservedObject var carVM: CarViewModel
+    @State var listings: [Listing]
     
     var body: some View {
         NavigationStack {
             ThemedBackground {
                 VStack {
+                    if listings.isEmpty {
+                        Text("No Listings")
+                            .foregroundColor(.secondary)
+                    } else {
+                        ForEach(listings) { listing in
+                            NavigationLink(destination: CarDetailView(carVM: carVM)) {
+                                LazyVStack(alignment: .leading) {
+                                    Text("\(listing.car.brand) \(listing.car.model)")
+                                    Text("\(listing.price, specifier: "%.2f")")
+                                        .foregroundColor(.secondary)
+                                }
+                            }
+                        }
+                    }
                     NavigationLink(destination: SellView()) {
                         Text("Sell Car")
                     }.buttonStyle(PillButtonStyle())

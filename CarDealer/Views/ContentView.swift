@@ -28,7 +28,7 @@ struct ContentView: View {
                         NavigationLink("Profile", destination: ProfileView())
                         NavigationLink("Catalogue", destination: CarCatalogueView())
                         NavigationLink("Search", destination: SearchView())
-                        //NavigationLink("Orders", destination: OrderView())
+                        NavigationLink("Orders", destination: OrdersView())
                         
                         Button("Log out"){
                             session.logout()

@@ -20,12 +20,10 @@ struct RootView: View {
 
 @main
 struct CarDealerApp: App {
-    //let container = try! ModelContainer(for: User.self, Car.self, Listing.self, Like.self)
     var container: ModelContainer
     init() {
         let schema = Schema([User.self, Car.self, Listing.self, Like.self, Order.self])
         let configuration = ModelConfiguration(schema: schema)
-        // Error: Thread 1: Fatal error: 'try!' expression unexpectedly raised an error: SwiftData.SwiftDataError(_error: SwiftData.SwiftDataError._Error.loadIssueModelContainer, _explanation: nil)
         self.container = try! ModelContainer(for: schema, configurations: [configuration])
     }
     
