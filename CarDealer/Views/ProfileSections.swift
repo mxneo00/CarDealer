@@ -9,45 +9,6 @@
 import SwiftUI
 import SwiftData
 
-// User Profile Section
-struct ProfileSection: View {
-    @EnvironmentObject var session: Session
-    let user: User
-    
-    var body: some View {
-            VStack {
-                // Redesigned
-                Image(session.currentUser!.avatarURL)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 300, height: 300)
-                    .clipShape(Circle())
-                    .overlay(Circle().stroke(.blue, lineWidth: 6))
-                    .padding(20)
-
-                ZStack {
-                    Rectangle()
-                        .fill(.white)
-                        //.ignoreSafeArea(edges: .all)
-                    VStack(alignment: .leading) {
-                        StyledSection(title: "Name") {
-                            if let user = session.currentUser {
-                                Text(user.name())
-                            } else {
-                                Text("No name")
-                            }
-                        }
-                        Spacer()
-                        StyledSection(title: "Email") {
-                            Text(session.currentUser!.email)
-                        }
-                        Spacer()
-                    }.padding(48)
-                }
-            }
-    }
-}
-
 // User Listings Section
 // ??? 
 struct ListingSection: View {
