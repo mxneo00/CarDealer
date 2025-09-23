@@ -45,6 +45,7 @@ struct CarDetailView: View {
     }
 }
 
+// Add ability to edit or delete listings
 struct ListingDetailView: View {
     @EnvironmentObject var session: Session
     
@@ -56,7 +57,10 @@ struct ListingDetailView: View {
     
     var body: some View {
         if let listing = listing {
-            Text("Listing: \(listing.car.year) \(listing.car.brand) \(listing.car.model)")
+            VStack {
+                Text("Listing: \(listing.car.year) \(listing.car.brand) \(listing.car.model)")
+                Text("Price: \(listing.car.price) \(listing.car.miles)")
+            }
         } else {
             Text("No Listings Yet")
         }

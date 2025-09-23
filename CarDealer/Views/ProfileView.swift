@@ -55,6 +55,7 @@ struct ProfileSection: View {
     
     var body: some View {
             VStack {
+                //FIX: upon relog profile image reverts back to default
                 if let avatarPath = session.currentUser?.avatarURL,
                    let uiImage = UIImage(contentsOfFile: avatarPath) {
                     Image(uiImage: uiImage)

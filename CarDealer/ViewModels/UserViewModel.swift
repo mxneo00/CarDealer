@@ -19,6 +19,7 @@ class UserVM: ObservableObject {
         self.user = user
         self.ctx = ctx
     }
+    
     func updateEmail(email: String) {
         self.user.email = email
         saveContext()
