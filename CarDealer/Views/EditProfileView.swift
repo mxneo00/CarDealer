@@ -43,4 +43,5 @@ struct EditProfileView: View {
         userVM.updateName(fname: userVM.user.fname, lname: userVM.user.lname)
         userVM.updateImage(avatarURL: userVM.user.avatarURL)
     }
+    
 }

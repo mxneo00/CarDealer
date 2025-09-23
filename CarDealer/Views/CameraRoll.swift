@@ -53,7 +53,7 @@ struct CameraRoll: UIViewControllerRepresentable {
 
 struct CameraRollView: View {
     @State private var showPicker = false
-    @State private var selectedImage: UIImage?
+    @State var selectedImage: UIImage?
     
     var body: some View {
         VStack {

@@ -10,7 +10,7 @@ import SwiftUI
 import SwiftData
 
 struct ProfileView: View {
-    @Environment(\.modelContext) private var context
+    @Environment(\.modelContext) private var ctx
     @EnvironmentObject var session: Session
     
     @Query(filter: #Predicate<User> { $0.email == "test@example.com"})
@@ -24,7 +24,7 @@ struct ProfileView: View {
                         ProfileSection(user: user)
                         HStack {
                             //TODO: Implement editing
-                            NavigationLink(destination: EditProfileView(userVM: UserVM(user: session.currentUser!))) {
+                            NavigationLink(destination: EditProfileView(userVM: UserVM(user: session.currentUser!, ctx: ctx))) {
 //                                Button("Edit Profile") {
 //                                    print("Navigating to Edit View")
 //                                }.buttonStyle(PillButtonStyle())
@@ -55,14 +55,25 @@ struct ProfileSection: View {
     
     var body: some View {
             VStack {
-                // Does not display default avatar properly
-                Image(session.currentUser!.avatarURL)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 300, height: 300)
-                    .clipShape(Circle())
-                    .overlay(Circle().stroke(.black, lineWidth: 3))
-                    .padding(20)
+                if let avatarPath = session.currentUser?.avatarURL,
+                   let uiImage = UIImage(contentsOfFile: avatarPath) {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 300, height: 300)
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(.black, lineWidth: 3))
+                        .padding(20)
+                } else {
+                    Image("default_avatar")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 300, height: 300)
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(.black, lineWidth: 3))
+                        .padding(20)
+                }
+                
 
                 ZStack {
                     Rectangle()
