@@ -80,14 +80,10 @@ struct LoginView: View {
                     StyledSection(title: "Username") {
                         TextField("Enter username", text: $username)
                             .formFieldStyle()
-                            .autocapitalization(.none)
-                            .autocorrectionDisabled(true)
                     }
                     StyledSection(title: "Password") {
                         SecureField("Enter password", text: $password)
                             .formFieldStyle()
-                            .autocapitalization(.none)
-                            .autocorrectionDisabled(true)
                     }
                     Button(action: login) {
                         Text("Login")
@@ -106,9 +102,6 @@ struct LoginView: View {
             error = "Username and password required"
             return
         }
-        // TODO Catch for username and password correct
-        
-        // Start session on login
         do {
             try session.login(emailOrUsername: username, password: password)
         } catch {
