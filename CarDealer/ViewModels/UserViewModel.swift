@@ -21,11 +21,12 @@ class UserVM: ObservableObject {
     }
     // Thread 1: Fatal error: No ObservableObject of type Session found. A View.environmentObject(_:) for Session may be missing as an ancestor of this view.
     func updateEmail(email: String) {
-        if let user = session.currentUser {
-            user.email = email
-        } else {
-            print("Error: Failed to find user")
-        }
+//        if let user = session.currentUser {
+//            user.email = email
+//        } else {
+//            print("Error: Failed to find user")
+//        }
+        self.user.email = email
         
         do {
             try ctx.save()
@@ -35,14 +36,17 @@ class UserVM: ObservableObject {
     }
     
     func updateName(fname: String, lname: String) {
-        if let user = session.currentUser {
-            user.fname = fname
-            user.lname = lname
-        } else {
-            print("Failed to find user")
-        }
+//        if let user = session.currentUser {
+//            user.fname = fname
+//            user.lname = lname
+//        } else {
+//            print("Failed to find user")
+//        }
+        self.user.fname = fname
+        self.user.lname = lname
         
         do {
+            // Purple Warning? Accessing Environment<ModelContext>'s value outside of being installed on a View. This will always read the default value and will not update. (But the last name updated properly)
             try ctx.save()
         } catch {
             print("Error updating name")
@@ -50,11 +54,12 @@ class UserVM: ObservableObject {
     }
     
     func updateImage(avatarURL: String) {
-        if let user = session.currentUser {
-            user.avatarURL = avatarURL
-        } else {
-            print("Failed to find user")
-        }
+//        if let user = session.currentUser {
+//            user.avatarURL = avatarURL
+//        } else {
+//            print("Failed to find user")
+//        }
+        self.user.avatarURL = avatarURL
         
         do {
             try ctx.save()
