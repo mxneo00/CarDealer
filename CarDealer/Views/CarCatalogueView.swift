@@ -27,7 +27,7 @@ struct CarCatalogueView: View {
                     }
                 }
                 .padding(.vertical)
-            }
-        }
+            }.padding()
+        }.ignoresSafeArea() //Messes with the top card
     }
 }

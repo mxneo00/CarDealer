@@ -63,7 +63,7 @@ struct OrdersView: View {
                     }.buttonStyle(PillButtonStyle())
                     Spacer()
                 }.padding()
-            }
+            }//.ignoresSafeArea() // Messes with the Listings
         }
     }
 }
@@ -74,14 +74,14 @@ struct ListingView: View {
     var body: some View {
         if listings.isEmpty {
             Text("No Listings")
-                .foregroundColor(.secondary)
+                .foregroundColor(.white)
         } else {
             ForEach(listings) { listing in
                 NavigationLink(destination: ListingDetailView(listing: listing)) {
                     LazyVStack(alignment: .leading) {
                         Text("\(listing.car.carName())")
                         Text("$\(listing.price, specifier: "%.2f")")
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.white)
                     }
                 }
             }

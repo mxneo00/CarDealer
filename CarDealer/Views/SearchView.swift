@@ -54,8 +54,8 @@ struct SearchView: View {
                         }
                     }.listStyle(PlainListStyle())
                 }
-            }.navigationTitle("Search")
-        }
+            }.padding().navigationTitle("Search")
+        }//.ignoresSafeArea() // Messes with the Search Bar
     }
     let sampleCars =  [
         "Tesla Model S",

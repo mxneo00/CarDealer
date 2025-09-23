@@ -14,7 +14,20 @@ struct PillButtonStyle: ButtonStyle {
         configuration.label
             .frame(maxWidth: .infinity)
             .padding(.vertical, 12)
-            .background(Capsule().fill(configuration.isPressed ? theme.palette.buttonColor.opacity(0.7) : theme.palette.buttonColor))
+            .background(Capsule().fill(configuration.isPressed ? theme.palette.buttonPrimary.opacity(0.7) : theme.palette.buttonPrimary))
+            .foregroundStyle(.white)
+            .animation(.easeInOut(duration: 0.15), value: configuration.isPressed)
+    }
+}
+
+struct SignUpButtonStyle: ButtonStyle {
+    @Environment(\.theme) private var theme
+    
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(maxWidth: 250)
+            .padding(.vertical, 12)
+            .background(Capsule().fill(configuration.isPressed ? theme.palette.buttonSecondary.opacity(0.7) : theme.palette.buttonSecondary))
             .foregroundStyle(.white)
             .animation(.easeInOut(duration: 0.15), value: configuration.isPressed)
     }

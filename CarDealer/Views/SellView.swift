@@ -18,26 +18,21 @@ struct SellView: View {
             ScrollView {
                 VStack {
                     StyledSection(title: "Brand") {
-                        TextField("Brand", text: $sellVM.brand)
-                            .formFieldStyle()
+                        TextField("Brand", text: $sellVM.brand).formFieldStyle()
                     }
                     StyledSection(title: "Model") {
-                        TextField("Model", text: $sellVM.model)
-                            .formFieldStyle()
+                        TextField("Model", text: $sellVM.model).formFieldStyle()
                     }
                     StyledSection(title: "Year") {
-                        TextField("Year", text: $sellVM.yearInput)
-                            .formFieldStyle()
+                        TextField("Year", text: $sellVM.yearInput).formFieldStyle()
                             .keyboardType(.numberPad)
                     }
                     StyledSection(title: "Price") {
-                        TextField("Price", text: $sellVM.priceInput)
-                            .formFieldStyle()
+                        TextField("Price", text: $sellVM.priceInput).formFieldStyle()
                             .keyboardType(.decimalPad)
                     }
                     StyledSection(title: "miles") {
-                        TextField("Miles", text: $sellVM.milesInput)
-                            .formFieldStyle()
+                        TextField("Miles", text: $sellVM.milesInput).formFieldStyle()
                             .keyboardType(.numberPad)
                     }
                     //                StyledSection(title: "Image") {
@@ -52,7 +47,7 @@ struct SellView: View {
                     }.buttonStyle(PillButtonStyle())
                 }.formStyle().padding(.horizontal)
             }
-        }
+        }.ignoresSafeArea()
     }
     
     func saveImageToDocuments(image: UIImage) -> String? {

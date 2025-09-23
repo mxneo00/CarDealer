@@ -39,7 +39,7 @@ struct EditProfileView: View {
                     Text("Update")
                 }.buttonStyle(PillButtonStyle())
             }.formStyle()
-        }
+        }.ignoresSafeArea()
     }
     
     func update() {

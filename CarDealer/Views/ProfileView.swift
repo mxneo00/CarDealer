@@ -23,13 +23,9 @@ struct ProfileView: View {
                     VStack(spacing: 20) {
                         ProfileSection(user: user)
                         HStack {
-                            //TODO: Implement editing
                             NavigationLink(destination: EditProfileView(userVM: UserVM(user: session.currentUser!, ctx: ctx))) {
-//                                Button("Edit Profile") {
-//                                    print("Navigating to Edit View")
-//                                }.buttonStyle(PillButtonStyle())
                                 Text("Edit Profile")
-                            }
+                            }.buttonStyle(PillButtonStyle())
                             Spacer()
                             Button("Logout") {
                                 session.logout()
@@ -38,12 +34,11 @@ struct ProfileView: View {
                         .padding(.horizontal)
                     }
                     .padding()
-                    .navigationTitle("Profile")
                 } else {
                     Text("No user signed in")
                         .navigationTitle("Profile")
                 }
-            }
+            }.ignoresSafeArea()
         }
     }
 }
@@ -55,7 +50,6 @@ struct ProfileSection: View {
     
     var body: some View {
             VStack {
-                //FIX: upon relog profile image reverts back to default
                 if let avatarPath = session.currentUser?.avatarURL,
                    let uiImage = UIImage(contentsOfFile: avatarPath) {
                     Image(uiImage: uiImage)

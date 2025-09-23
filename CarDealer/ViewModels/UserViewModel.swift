@@ -31,6 +31,7 @@ class UserVM: ObservableObject {
         saveContext()
     }
     
+    // Doesnt completely save persistently it seems
     func updateImage(avatarURL: String) {
         self.user.avatarURL = avatarURL
         saveContext()

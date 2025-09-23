@@ -56,14 +56,16 @@ struct ListingDetailView: View {
     }
     
     var body: some View {
-        if let listing = listing {
-            VStack {
-                Text("Listing: \(listing.car.year) \(listing.car.brand) \(listing.car.model)")
-                Text("Price: \(listing.car.price) \(listing.car.miles)")
+        ThemedBackground {
+            if let listing = listing {
+                VStack {
+                    Text("Listing: \(listing.car.year) \(listing.car.brand) \(listing.car.model)")
+                    Text("Price: \(listing.car.price) \(listing.car.miles)")
+                }
+            } else {
+                Text("No Listings Yet")
             }
-        } else {
-            Text("No Listings Yet")
-        }
+        }.ignoresSafeArea()
     }
     
 }
