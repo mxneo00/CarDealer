@@ -19,7 +19,7 @@ class UserVM: ObservableObject {
     init(user: User) {
         self.user = user
     }
-    
+    // Thread 1: Fatal error: No ObservableObject of type Session found. A View.environmentObject(_:) for Session may be missing as an ancestor of this view.
     func updateEmail(email: String) {
         if let user = session.currentUser {
             user.email = email
@@ -49,8 +49,18 @@ class UserVM: ObservableObject {
         }
     }
     
-//    func updateImage() {
-//        
-//    }
+    func updateImage(avatarURL: String) {
+        if let user = session.currentUser {
+            user.avatarURL = avatarURL
+        } else {
+            print("Failed to find user")
+        }
+        
+        do {
+            try ctx.save()
+        } catch {
+            print("Error updating profile image")
+        }
+    }
     
 }

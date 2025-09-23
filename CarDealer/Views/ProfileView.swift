@@ -14,6 +14,10 @@ struct EditProfileView: View {
     @EnvironmentObject var session: Session
     @ObservedObject var userVM: UserVM
     
+    init(userVM: UserVM) {
+        self.userVM = userVM
+    }
+    
     var body: some View {
         ThemedBackground {
             VStack {
@@ -25,6 +29,9 @@ struct EditProfileView: View {
                 }
                 StyledSection(title: "Last Name") {
                     TextField("last name", text: $userVM.user.lname).formFieldStyle()
+                }
+                StyledSection(title: "Profile Picture") {
+                    CameraRollView()
                 }
                 // TODO: Update Profile Image
                 Button(action: update) {
@@ -55,9 +62,12 @@ struct ProfileView: View {
                         ProfileSection(user: user)
                         HStack {
                             //TODO: Implement editing
-//                            NavigationLink("Edit Profile") {
-//                                EditProfileView()
-//                            }
+                            NavigationLink(destination: EditProfileView(userVM: UserVM(user: session.currentUser!))) {
+//                                Button("Edit Profile") {
+//                                    print("Navigating to Edit View")
+//                                }.buttonStyle(PillButtonStyle())
+                                Text("Edit Profile")
+                            }
                             Spacer()
                             Button("Logout") {
                                 session.logout()

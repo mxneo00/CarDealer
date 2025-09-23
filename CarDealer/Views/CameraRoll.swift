@@ -58,7 +58,7 @@ struct CameraRollView: View {
     var body: some View {
         VStack {
             if let image = selectedImage {
-                Image(uiImage: image).resizable().scaledToFit().frame(height: 300)
+                Image(uiImage: image).resizable().scaledToFit()
             }
             Button("Select Photo") {
                 showPicker = true
