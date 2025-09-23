@@ -35,11 +35,10 @@ struct CarDetailView: View {
                     Text("\(carVM.car.year, format: .number.grouping(.never)) \(carVM.car.brand) \(carVM.car.model)")
                     Text("\(carVM.car.price, specifier: "%.2f")")
                 }
-                //TODO: Implement OrderView Properly
-//                NavigationLink(desination: OrderView(carVM: carVM)) {
-//                    Text("Purchase Car")
-//                }.buttonStyle(PillButtonStyle())
-//                Spacer()
+                NavigationLink(destination: OrderView(carVM: CarViewModel(car: carVM.car))) {
+                    Text("Purchase Car")
+                }.buttonStyle(PillButtonStyle())
+                Spacer()
             }
         }
     }

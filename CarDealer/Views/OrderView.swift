@@ -8,6 +8,8 @@
 import SwiftUI
 import SwiftData
 
+// Note: Partially Implemented. Should connect to the current User
+// Future Additions: Purchases View for users
 struct OrderView: View {
     @ObservedObject var carVM: CarViewModel
     @State private var orderPrice: String
@@ -18,17 +20,19 @@ struct OrderView: View {
     }
     
     var body: some View {
-        VStack {
-            Text("Confirm Purchase")
-                .font(.headline)
-            StyledSection(title: "Price") {
-                TextField("Price", text: $orderPrice)
-                    .keyboardType(.decimalPad)
-            }
-            Button(action: placeOrder) {
-                Text("Place Order")
-            }.buttonStyle(PillButtonStyle())
-        }.formStyle()
+        ThemedBackground {
+            VStack {
+                Text("Confirm Purchase")
+                    .font(.headline)
+                StyledSection(title: "Price") {
+                    TextField("Price", text: $orderPrice).formFieldStyle()
+                        .keyboardType(.decimalPad)
+                }
+                Button(action: placeOrder) {
+                    Text("Place Order")
+                }.buttonStyle(PillButtonStyle())
+            }.formStyle()
+        }.ignoresSafeArea()
     }
     
     private func placeOrder() {
