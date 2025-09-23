@@ -1,9 +1,10 @@
 //
-//  CarListingView.swift
+//  CarDetailView.swift
 //  CarDealer
 //
 //  Created by Katellyn Hyker on 9/11/25.
 // View Specific Car Details
+// Also includes car listing view for vehicles users add
 
 import SwiftUI
 import SwiftData

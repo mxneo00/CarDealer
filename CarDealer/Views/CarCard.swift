@@ -1,9 +1,10 @@
 //
-//  CarCollectionView.swift
+//  CarCard.swift
 //  CarDealer
 //
 //  Created by Katellyn Hyker on 9/22/25.
-//
+// CarCard that includes a car image, basic details and a link to view more details.
+// TODO: Adjust so image will take the image linked to a car listing, Adjust so price is accurate for each car
 
 import SwiftUI
 import SwiftData

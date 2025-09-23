@@ -1,11 +1,11 @@
 //
-//  SignInView.swift
+//  AuthView.swift
 //  CarDealer
 //
 //  Created by Katellyn Hyker on 9/11/25.
 //
 // Sign up page for new users to create an account
-// Create a login page for users to enter username and password to log in
+// Login page for users to enter username and password to log in
 
 import SwiftUI
 import SwiftData
