@@ -53,17 +53,27 @@ struct CameraRoll: UIViewControllerRepresentable {
 
 struct CameraRollView: View {
     @State private var showPicker = false
-    @State var selectedImage: UIImage?
+    @State private var selectedImage: UIImage?
+    var onSelected: (UIImage) -> Void
     
     var body: some View {
         VStack {
             if let image = selectedImage {
-                Image(uiImage: image).resizable().scaledToFit()
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 300, height: 300)
+                    .clipShape(Circle())
             }
             Button("Select Photo") {
                 showPicker = true
             }.sheet(isPresented: $showPicker) {
                 CameraRoll(image: $selectedImage)
+                    .onDisappear {
+                        if let image = selectedImage {
+                            onSelected(image)
+                        }
+                    }
             }
         }
     }

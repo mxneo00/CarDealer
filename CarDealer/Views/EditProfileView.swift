@@ -29,7 +29,11 @@ struct EditProfileView: View {
                     TextField("last name", text: $userVM.user.lname).formFieldStyle()
                 }
                 StyledSection(title: "Profile Picture") {
-                    CameraRollView()
+                    CameraRollView { image in
+                        if let path = saveImageToDocuments(image: image) {
+                            userVM.user.avatarURL = path
+                        }
+                    }
                 }
                 Button(action: update) {
                     Text("Update")
@@ -44,4 +48,17 @@ struct EditProfileView: View {
         userVM.updateImage(avatarURL: userVM.user.avatarURL)
     }
     
+    func saveImageToDocuments(image: UIImage) -> String? {
+        guard let data = image.jpegData(compressionQuality: 0.8) else {return nil}
+        let filename = UUID().uuidString + ".jpg"
+        let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            .appendingPathComponent(filename)
+        do {
+            try data.write(to: url)
+            return url.path
+        } catch {
+            print("Error saving image")
+            return nil
+        }
+    }
 }

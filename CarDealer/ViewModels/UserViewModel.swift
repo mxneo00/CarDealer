@@ -42,8 +42,4 @@ class UserVM: ObservableObject {
             print("Error saving user changes.")
         }
     }
-    
-    func imageConversion() {
-        
-    }
 }

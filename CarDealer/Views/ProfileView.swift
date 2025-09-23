@@ -89,7 +89,11 @@ struct ProfileSection: View {
                         }
                         Spacer()
                         StyledSection(title: "Email") {
-                            Text(session.currentUser!.email)
+                            if let user = session.currentUser {
+                                Text(user.email)
+                            } else {
+                                Text("No Email")
+                            }
                         }
                         Spacer()
                     }.padding(48)
