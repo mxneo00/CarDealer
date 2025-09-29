@@ -8,6 +8,8 @@
 import SwiftUI
 import SwiftData
 
+// Note: Partially Implemented. Should connect to the current User
+// Future Additions: Purchases View for users
 struct OrderView: View {
     @ObservedObject var carVM: CarViewModel
     @State private var orderPrice: String
@@ -18,17 +20,19 @@ struct OrderView: View {
     }
     
     var body: some View {
-        VStack {
-            Text("Confirm Purchase")
-                .font(.headline)
-            StyledSection(title: "Price") {
-                TextField("Price", text: $orderPrice)
-                    .keyboardType(.decimalPad)
-            }
-            Button(action: placeOrder) {
-                Text("Place Order")
-            }.buttonStyle(PillButtonStyle())
-        }.formStyle()
+        ThemedBackground {
+            VStack {
+                Text("Confirm Purchase")
+                    .font(.headline)
+                StyledSection(title: "Price") {
+                    TextField("Price", text: $orderPrice).formFieldStyle()
+                        .keyboardType(.decimalPad)
+                }
+                Button(action: placeOrder) {
+                    Text("Place Order")
+                }.buttonStyle(PillButtonStyle())
+            }.formStyle()
+        }.ignoresSafeArea()
     }
     
     private func placeOrder() {
@@ -63,7 +67,7 @@ struct OrdersView: View {
                     }.buttonStyle(PillButtonStyle())
                     Spacer()
                 }.padding()
-            }
+            }//.ignoresSafeArea() // Messes with the Listings
         }
     }
 }
@@ -74,14 +78,14 @@ struct ListingView: View {
     var body: some View {
         if listings.isEmpty {
             Text("No Listings")
-                .foregroundColor(.secondary)
+                .foregroundColor(.white)
         } else {
             ForEach(listings) { listing in
                 NavigationLink(destination: ListingDetailView(listing: listing)) {
                     LazyVStack(alignment: .leading) {
                         Text("\(listing.car.carName())")
                         Text("$\(listing.price, specifier: "%.2f")")
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.white)
                     }
                 }
             }

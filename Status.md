@@ -8,21 +8,19 @@ SwiftData Models
 Selling/Listings    
 theme and styling (Could use improvements)   
 Environments   
-
+Camera Roll   
+Edit Profile   
 
 ## In progress
-SwiftData implementation   
+SwiftData implementation (Completed except for any other additions)   
 Error Handling   
 Likes (optional addition)    
 Buy Flow   
-Edit Profile   
 Mock Data    
-
 
 
 ## ToDo
 ### Final Project additions
-Camera Roll   
 Map View   
 ### Optional Additions
 Camera View   

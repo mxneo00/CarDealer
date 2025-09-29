@@ -1,9 +1,10 @@
 //
-//  CarCollectionView.swift
+//  CarCard.swift
 //  CarDealer
 //
 //  Created by Katellyn Hyker on 9/22/25.
-//
+// CarCard that includes a car image, basic details and a link to view more details.
+// TODO: Adjust so image will take the image linked to a car listing, Adjust so price is accurate for each car
 
 import SwiftUI
 import SwiftData
@@ -34,7 +35,7 @@ struct CarCard: View {
 
                     HStack {
                         Spacer()
-                        Text("19.99")
+                        Text("$\(carVM.car.price, specifier: "%.2f")")
                             .font(.headline.bold())
                             .padding(.horizontal, 12)
                             .padding(.vertical, 6)
@@ -53,10 +54,11 @@ struct CarCard: View {
                         .foregroundColor(.secondary)
                     
                     HStack(spacing: 16) {
-                        Label("\(carVM.car.year, format: .number.grouping(.never))", systemImage: "gauge")
-                        //Label("\(carVM.car.fuelType)", systemImage: "fuelPump")
-                        //Label("\(CVM.car.year)", systemImage: "paintpalette")
-                        //Label("\(CVM.car.year)", systemImage: "gearshape")
+                        Label("\(carVM.car.year, format: .number.grouping(.never))", systemImage: "calendar")
+                        Label("\(carVM.car.miles)", systemImage: "road.lanes")
+                        Label("\(carVM.car.engine)", systemImage: "bolt.car")
+                        Label("\(carVM.car.fuelType)", systemImage: "fuelpump")
+                        Label("\(carVM.car.horsepower)", systemImage: "speedometer")
                     }
                     .font(.caption)
                     .foregroundColor(.secondary)

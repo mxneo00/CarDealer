@@ -12,45 +12,36 @@ import SwiftUI
 import SwiftData
 
 class UserVM: ObservableObject {
-    @EnvironmentObject var session: Session
-    @Environment(\.modelContext) var ctx: ModelContext
+    private var ctx: ModelContext
     @Published var user: User
     
-    init(user: User) {
+    init(user: User, ctx: ModelContext) {
         self.user = user
+        self.ctx = ctx
     }
     
     func updateEmail(email: String) {
-        if let user = session.currentUser {
-            user.email = email
-        } else {
-            print("Error: Failed to find user")
-        }
-        
-        do {
-            try ctx.save()
-        } catch {
-            print("Error updating email")
-        }
+        self.user.email = email
+        saveContext()
     }
     
     func updateName(fname: String, lname: String) {
-        if let user = session.currentUser {
-            user.fname = fname
-            user.lname = lname
-        } else {
-            print("Failed to find user")
-        }
-        
+        self.user.fname = fname
+        self.user.lname = lname
+        saveContext()
+    }
+    
+    // Doesnt completely save persistently it seems
+    func updateImage(avatarURL: String) {
+        self.user.avatarURL = avatarURL
+        saveContext()
+    }
+    
+    private func saveContext() {
         do {
             try ctx.save()
         } catch {
-            print("Error updating name")
+            print("Error saving user changes.")
         }
     }
-    
-//    func updateImage() {
-//        
-//    }
-    
 }

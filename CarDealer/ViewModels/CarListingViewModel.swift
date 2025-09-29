@@ -13,9 +13,11 @@ class SellTabViewModel: ObservableObject {
     @Published var model: String = ""
     @Published var yearInput: String = ""
     @Published var priceInput: String = ""
+    @Published var milesInput: String = ""
     @Published var imageURL: String = ""
     var year: Int? { Int(yearInput) }
     var price: Float? { Float(priceInput)}
+    var miles: Int? { Int(milesInput)}
     
     func createListing(ctx: ModelContext, user: User?) {
         guard let year = year, let price = price, let user = user else {
@@ -44,6 +46,7 @@ class SellTabViewModel: ObservableObject {
         model = ""
         yearInput = ""
         priceInput = ""
+        milesInput = ""
         imageURL = ""
     }
     

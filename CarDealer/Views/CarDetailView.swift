@@ -1,9 +1,10 @@
 //
-//  CarListingView.swift
+//  CarDetailView.swift
 //  CarDealer
 //
 //  Created by Katellyn Hyker on 9/11/25.
 // View Specific Car Details
+// Also includes car listing view for vehicles users add
 
 import SwiftUI
 import SwiftData
@@ -34,16 +35,16 @@ struct CarDetailView: View {
                     Text("\(carVM.car.year, format: .number.grouping(.never)) \(carVM.car.brand) \(carVM.car.model)")
                     Text("\(carVM.car.price, specifier: "%.2f")")
                 }
-                //TODO: Implement OrderView Properly
-//                NavigationLink(desination: OrderView(carVM: carVM)) {
-//                    Text("Purchase Car")
-//                }.buttonStyle(PillButtonStyle())
-//                Spacer()
+                NavigationLink(destination: OrderView(carVM: CarViewModel(car: carVM.car))) {
+                    Text("Purchase Car")
+                }.buttonStyle(PillButtonStyle())
+                Spacer()
             }
         }
     }
 }
 
+// Add ability to edit or delete listings
 struct ListingDetailView: View {
     @EnvironmentObject var session: Session
     
@@ -54,11 +55,16 @@ struct ListingDetailView: View {
     }
     
     var body: some View {
-        if let listing = listing {
-            Text("Listing: \(listing.car.year) \(listing.car.brand) \(listing.car.model)")
-        } else {
-            Text("No Listings Yet")
-        }
+        ThemedBackground {
+            if let listing = listing {
+                VStack {
+                    Text("Listing: \(listing.car.year) \(listing.car.brand) \(listing.car.model)")
+                    Text("Price: \(listing.car.price) \(listing.car.miles)")
+                }
+            } else {
+                Text("No Listings Yet")
+            }
+        }.ignoresSafeArea()
     }
     
 }

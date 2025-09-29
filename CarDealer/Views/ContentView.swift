@@ -10,6 +10,7 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
+    @Environment(\.theme) var theme
     @EnvironmentObject var session: Session
     
     var body: some View {
@@ -43,15 +44,20 @@ struct ContentView: View {
                             session.logout()
                         }.buttonStyle(PillButtonStyle())
                     } else {
-                        NavigationLink("Log In", destination: LoginView())
-                        NavigationLink("Sign Up", destination: SignUpView())
+                        Text("Welcome!")
+                            .font(.title2)
+                            .foregroundColor(theme.palette.accent)
                         NavigationLink("Car Catalogue", destination: CarCatalogueView())
+                            .fontWeight(.bold)
                         NavigationLink("Search", destination: SearchView())
+                            .fontWeight(.bold)
+                        NavigationLink("Log In", destination: LoginView()).buttonStyle(PillButtonStyle())
+                        NavigationLink("Sign Up", destination: SignUpView()).buttonStyle(SignUpButtonStyle())
                     }
                     Spacer()
                 }
                 .padding()
-            }
+            }.ignoresSafeArea()
         }
         .navigationTitle("Home")
     }

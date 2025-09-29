@@ -1,11 +1,11 @@
 //
-//  SignInView.swift
+//  AuthView.swift
 //  CarDealer
 //
 //  Created by Katellyn Hyker on 9/11/25.
 //
 // Sign up page for new users to create an account
-// Create a login page for users to enter username and password to log in
+// Login page for users to enter username and password to log in
 
 import SwiftUI
 import SwiftData
@@ -25,28 +25,22 @@ struct SignUpView: View {
         ThemedBackground {
             VStack {
                 StyledSection(title: "Username") {
-                    TextField("Enter username", text: $username)
-                        .formFieldStyle()
+                    TextField("Enter username", text: $username).formFieldStyle()
                 }
                 StyledSection(title: "First Name") {
-                    TextField("First name", text: $fname)
-                        .formFieldStyle()
+                    TextField("First name", text: $fname).formFieldStyle()
                 }
                 StyledSection(title: "Last Name") {
-                    TextField("Last name", text: $lname)
-                        .formFieldStyle()
+                    TextField("Last name", text: $lname).formFieldStyle()
                 }
                 StyledSection(title: "Email") {
-                    TextField("Email", text: $email)
-                        .formFieldStyle()
+                    TextField("Email", text: $email).formFieldStyle()
                 }
                 StyledSection(title: "Password") {
-                    SecureField("Password", text: $password)
-                        .formFieldStyle()
+                    SecureField("Password", text: $password).formFieldStyle()
                 }
                 StyledSection(title: "Confirm Password") {
-                    SecureField("Confirm password", text: $passwordConfirmation)
-                        .formFieldStyle()
+                    SecureField("Confirm password", text: $passwordConfirmation).formFieldStyle()
 
                 }
                 Button("Sign Up") {
@@ -57,7 +51,7 @@ struct SignUpView: View {
                     }
                 }.buttonStyle(PillButtonStyle())
             }.formStyle().padding(.horizontal)
-        }
+        }.ignoresSafeArea()
     }
 }
 
@@ -76,27 +70,21 @@ struct LoginView: View {
     var body: some View {
         NavigationStack {
             ThemedBackground {
-                VStack(spacing: 24) {
+                VStack(spacing: 50) {
                     StyledSection(title: "Username") {
-                        TextField("Enter username", text: $username)
-                            .formFieldStyle()
-                            .autocapitalization(.none)
-                            .autocorrectionDisabled(true)
+                        TextField("Enter username", text: $username).formFieldStyle()
                     }
                     StyledSection(title: "Password") {
-                        SecureField("Enter password", text: $password)
-                            .formFieldStyle()
-                            .autocapitalization(.none)
-                            .autocorrectionDisabled(true)
+                        SecureField("Enter password", text: $password).formFieldStyle()
                     }
                     Button(action: login) {
                         Text("Login")
                     }.buttonStyle(PillButtonStyle())
                     StyledSection(title: "New User?") {
                         NavigationLink("Sign Up", destination: SignUpView())
-                    }
+                    }.buttonStyle(SignUpButtonStyle())
                 }.formStyle().padding(.horizontal)
-            }
+            }.ignoresSafeArea()
         }
     }
     
@@ -106,9 +94,6 @@ struct LoginView: View {
             error = "Username and password required"
             return
         }
-        // TODO Catch for username and password correct
-        
-        // Start session on login
         do {
             try session.login(emailOrUsername: username, password: password)
         } catch {

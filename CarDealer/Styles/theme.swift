@@ -13,7 +13,8 @@ struct Theme: Equatable {
         let secondary: Color
         let onPrimary: Color
         let accent: Color
-        let buttonColor: Color
+        let buttonPrimary: Color
+        let buttonSecondary: Color
         let cardBackground: Color
         let danger: Color
         let textField: Color
@@ -33,7 +34,8 @@ struct Theme: Equatable {
             secondary: Color("brandSecondary"),
             onPrimary: .white,
             accent: Color("accent"),
-            buttonColor: Color("button"),
+            buttonPrimary: Color("button"),
+            buttonSecondary: Color("buttonSecondary"),
             cardBackground: Color(.secondarySystemBackground),
             danger: .red,
             textField: Color("brand")
